@@ -1,0 +1,10 @@
+# 8 functions reachable from entry 0x00AB59
+# entry  file_offset  size  ints      calls  far_calls    callers
+0x00AB59  file=0x00C429  sz= 8281  -             calls=  5  far=0000:0EED,01C2:0EED,0216:0EED,000D:0F16  callers=0
+0x007C67  file=0x009537  sz=  918  -             calls=  1  far=01C2:0EED,031A:0F16,02CD:0F78,0AE7:0F78  callers=1
+0x007538  file=0x008E08  sz=  524  -             calls=  0  far=01C2:0EED,0216:0EED,031A:0F16,0291:0F78  callers=1
+0x0002C2  file=0x001B92  sz=  508  -             calls=  0  far=01C2:0EED,01CC:0F16,0263:0F16,031A:0F16  callers=1
+0x003D11  file=0x0055E1  sz=  489  -             calls=  0  far=01C2:0EED,02CD:0F78,0AE7:0F78,0B66:0F78  callers=1
+0x006A0D  file=0x0082DD  sz=  484  -             calls=  1  far=0000:0EE5,003E:0EE5,01C2:0EED,01CC:0F16  callers=1
+0x0011C2  file=0x002A92  sz=  371  -             calls=  0  far=02CD:0F78                  callers=1
+0x002526  file=0x003DF6  sz=  125  -             calls=  0  far=02CD:0F78                  callers=1

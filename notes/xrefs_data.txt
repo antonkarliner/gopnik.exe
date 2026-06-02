@@ -1,0 +1,7 @@
+# Using data base = 0x000000 (2 hits)
+
+frag @ 0x00194B  '   / ?                  ^2'
+  drawn by fn 0x0011C2 @ instr 0x0011EE  mov word ptr [0x3958], 0x7b
+
+frag @ 0x001B44  'M     ^02003 year, June,Sept                                '
+  drawn by fn 0x0002C2 @ instr 0x000489  mov di, 0x274

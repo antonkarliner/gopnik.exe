@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>GOPNIK.EXE &mdash; веб-порт</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080a'/%3E%3Ctext x='5' y='23' fill='%2367ff8d' font-family='monospace' font-size='20'%3EG%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="chrome">
+    <h1>GOPNIK</h1>
+    <p class="subtitle">v1.02 &middot; июнь/сентябрь 2003 &middot; by V.P.U. &middot; <span>веб-порт</span></p>
+  </header>
+
+  <main>
+    <div class="bezel" id="bezel">
+      <canvas id="screen" width="720" height="400" aria-label="Экран игры"></canvas>
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="vignette" aria-hidden="true"></div>
+    </div>
+
+    <section class="hud">
+      <p class="hint">
+        <strong>Кликните на экран</strong>, затем используйте клавиатуру.
+        На телефонах панель под экраном дублирует основные клавиши.
+        Нажмите <kbd>F</kbd> для полноэкранного режима.
+      </p>
+      <div class="savebar" id="savebar">
+        <button type="button" data-cmd="export" title="Скачать сейв файлом (.json)">⬇ Скачать сейв</button>
+        <button type="button" data-cmd="import" title="Загрузить сейв из файла (.json)">⬆ Загрузить сейв</button>
+      </div>
+      <div class="touchpad" id="touchpad" aria-hidden="true">
+        <button data-key="ArrowUp">▲</button>
+        <button data-key="ArrowLeft">◀</button>
+        <button data-key="Enter">⏎</button>
+        <button data-key="ArrowRight">▶</button>
+        <button data-key="ArrowDown">▼</button>
+        <button data-key="Escape">Esc</button>
+        <button data-key="1">1</button>
+        <button data-key="2">2</button>
+        <button data-key="3">3</button>
+        <button data-key="4">4</button>
+        <button data-key="5">5</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="chrome">
+    <small>
+      Точный веб-порт &mdash; оригинальный DOS-файл полностью декомпилирован
+      и переписан на JavaScript; эмулятор не используется. Исходный код и заметки
+      на странице проекта.
+    </small>
+  </footer>
+
+  <script type="module" src="src/main.js?v=51"></script>
+</body>
+</html>

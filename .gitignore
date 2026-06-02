@@ -1,0 +1,28 @@
+.DS_Store
+Thumbs.db
+
+# Local environment and Python caches
+.venv/
+.venv-ghidra/
+__pycache__/
+*.py[cod]
+
+# AI agent tool directories (local only)
+.claude/
+.Codex/
+
+# Local configuration, secrets, and editor state
+.env
+.env.*
+!.env.example
+*.swp
+*.swo
+
+# Temporary and generated backup files
+*.bak
+*.tmp
+*.log
+
+# Ghidra local locks/state; the project data itself is intentionally kept.
+ghidra_proj/**/*.lock
+ghidra_proj/**/.lock

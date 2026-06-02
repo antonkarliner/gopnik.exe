@@ -1,0 +1,2737 @@
+[
+  {
+    "file_offset": 6352,
+    "len": 21,
+    "text": "?                  ^0"
+  },
+  {
+    "file_offset": 6395,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6403,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6411,
+    "len": 26,
+    "text": "    /?                  ^1"
+  },
+  {
+    "file_offset": 6438,
+    "len": 5,
+    "text": "     "
+  },
+  {
+    "file_offset": 6444,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6451,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6459,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6467,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6475,
+    "len": 26,
+    "text": "   / ?                  ^2"
+  },
+  {
+    "file_offset": 6502,
+    "len": 5,
+    "text": "     "
+  },
+  {
+    "file_offset": 6508,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6515,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6523,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6531,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6539,
+    "len": 26,
+    "text": "  /  ?                  ^3"
+  },
+  {
+    "file_offset": 6566,
+    "len": 5,
+    "text": "     "
+  },
+  {
+    "file_offset": 6572,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6579,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6595,
+    "len": 4,
+    "text": "   /"
+  },
+  {
+    "file_offset": 6603,
+    "len": 26,
+    "text": "_/   ?                  ^4"
+  },
+  {
+    "file_offset": 6630,
+    "len": 5,
+    "text": "     "
+  },
+  {
+    "file_offset": 6636,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6643,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6651,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6659,
+    "len": 4,
+    "text": "  / "
+  },
+  {
+    "file_offset": 6667,
+    "len": 26,
+    "text": " \\   ?                  ^5"
+  },
+  {
+    "file_offset": 6694,
+    "len": 5,
+    "text": "     "
+  },
+  {
+    "file_offset": 6700,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6707,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6715,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6723,
+    "len": 4,
+    "text": " /  "
+  },
+  {
+    "file_offset": 6731,
+    "len": 26,
+    "text": "  \\  ?                  ^6"
+  },
+  {
+    "file_offset": 6758,
+    "len": 5,
+    "text": "     "
+  },
+  {
+    "file_offset": 6764,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6771,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6779,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6787,
+    "len": 4,
+    "text": "/   "
+  },
+  {
+    "file_offset": 6795,
+    "len": 26,
+    "text": "   \\ ?                  ^7"
+  },
+  {
+    "file_offset": 6822,
+    "len": 5,
+    "text": "     "
+  },
+  {
+    "file_offset": 6835,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6843,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6851,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 6859,
+    "len": 56,
+    "text": "    \\=                                                ^0"
+  },
+  {
+    "file_offset": 6921,
+    "len": 34,
+    "text": " 1.025                          ^6"
+  },
+  {
+    "file_offset": 6980,
+    "len": 79,
+    "text": "M     ^02003 year, June,Sept                                         ^2by V.P.U"
+  },
+  {
+    "file_offset": 7566,
+    "len": 41,
+    "text": "0                                      ^4"
+  },
+  {
+    "file_offset": 7614,
+    "len": 40,
+    "text": ".1                                    ^2"
+  },
+  {
+    "file_offset": 7666,
+    "len": 12,
+    "text": "          ^<"
+  },
+  {
+    "file_offset": 7679,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7706,
+    "len": 5,
+    "text": "     "
+  },
+  {
+    "file_offset": 7712,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7726,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7740,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7747,
+    "len": 6,
+    "text": "      "
+  },
+  {
+    "file_offset": 7754,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7762,
+    "len": 10,
+    "text": "          "
+  },
+  {
+    "file_offset": 7773,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7780,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7787,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7794,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7801,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7808,
+    "len": 6,
+    "text": "      "
+  },
+  {
+    "file_offset": 7815,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7823,
+    "len": 17,
+    "text": "           \\  /  "
+  },
+  {
+    "file_offset": 7841,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7848,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7855,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7862,
+    "len": 4,
+    "text": "   /"
+  },
+  {
+    "file_offset": 7869,
+    "len": 6,
+    "text": "      "
+  },
+  {
+    "file_offset": 7876,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7884,
+    "len": 17,
+    "text": "            \\/   "
+  },
+  {
+    "file_offset": 7902,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7909,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7916,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7923,
+    "len": 4,
+    "text": "  / "
+  },
+  {
+    "file_offset": 7930,
+    "len": 6,
+    "text": "      "
+  },
+  {
+    "file_offset": 7949,
+    "len": 13,
+    "text": "        /\\   "
+  },
+  {
+    "file_offset": 7963,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7977,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 7984,
+    "len": 4,
+    "text": " /  "
+  },
+  {
+    "file_offset": 7991,
+    "len": 6,
+    "text": "      "
+  },
+  {
+    "file_offset": 7998,
+    "len": 7,
+    "text": "       "
+  },
+  {
+    "file_offset": 8006,
+    "len": 17,
+    "text": "           /  \\  "
+  },
+  {
+    "file_offset": 8031,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8045,
+    "len": 4,
+    "text": "/   "
+  },
+  {
+    "file_offset": 8052,
+    "len": 6,
+    "text": "      "
+  },
+  {
+    "file_offset": 8059,
+    "len": 7,
+    "text": "       "
+  },
+  {
+    "file_offset": 8067,
+    "len": 10,
+    "text": "          "
+  },
+  {
+    "file_offset": 8078,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8085,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8092,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8099,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8106,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8113,
+    "len": 6,
+    "text": "      "
+  },
+  {
+    "file_offset": 8120,
+    "len": 7,
+    "text": "       "
+  },
+  {
+    "file_offset": 8133,
+    "len": 5,
+    "text": "     "
+  },
+  {
+    "file_offset": 8139,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8146,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8153,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8160,
+    "len": 4,
+    "text": "    "
+  },
+  {
+    "file_offset": 8165,
+    "len": 29,
+    "text": "5                          ^6"
+  },
+  {
+    "file_offset": 11139,
+    "len": 4,
+    "text": " #-#"
+  },
+  {
+    "file_offset": 11191,
+    "len": 6,
+    "text": " #/#  "
+  },
+  {
+    "file_offset": 11206,
+    "len": 4,
+    "text": " #%\r"
+  },
+  {
+    "file_offset": 11218,
+    "len": 5,
+    "text": " 90% "
+  },
+  {
+    "file_offset": 11238,
+    "len": 8,
+    "text": " #% - # "
+  },
+  {
+    "file_offset": 11271,
+    "len": 6,
+    "text": " #%\r^2"
+  },
+  {
+    "file_offset": 11282,
+    "len": 7,
+    "text": " #    U"
+  },
+  {
+    "file_offset": 11309,
+    "len": 4,
+    "text": ">\\9("
+  },
+  {
+    "file_offset": 11477,
+    "len": 4,
+    "text": "6\\91"
+  },
+  {
+    "file_offset": 11515,
+    "len": 4,
+    "text": "6Z91"
+  },
+  {
+    "file_offset": 11536,
+    "len": 4,
+    "text": "6`91"
+  },
+  {
+    "file_offset": 11820,
+    "len": 4,
+    "text": "6d91"
+  },
+  {
+    "file_offset": 12080,
+    "len": 4,
+    "text": "7777"
+  },
+  {
+    "file_offset": 12118,
+    "len": 5,
+    "text": ": .^6"
+  },
+  {
+    "file_offset": 12173,
+    "len": 4,
+    "text": "#^7 "
+  },
+  {
+    "file_offset": 12182,
+    "len": 4,
+    "text": "#^7 "
+  },
+  {
+    "file_offset": 12191,
+    "len": 4,
+    "text": "#^7 "
+  },
+  {
+    "file_offset": 12226,
+    "len": 5,
+    "text": " +2) "
+  },
+  {
+    "file_offset": 12251,
+    "len": 5,
+    "text": " +1) "
+  },
+  {
+    "file_offset": 12290,
+    "len": 5,
+    "text": " +1) "
+  },
+  {
+    "file_offset": 12313,
+    "len": 5,
+    "text": " +4) "
+  },
+  {
+    "file_offset": 12463,
+    "len": 4,
+    "text": "^1! "
+  },
+  {
+    "file_offset": 12475,
+    "len": 4,
+    "text": " - #"
+  },
+  {
+    "file_offset": 12502,
+    "len": 6,
+    "text": "^1.^4 "
+  },
+  {
+    "file_offset": 12534,
+    "len": 8,
+    "text": " #-#    "
+  },
+  {
+    "file_offset": 12550,
+    "len": 5,
+    "text": "(+1) "
+  },
+  {
+    "file_offset": 12586,
+    "len": 7,
+    "text": "+2) \r^1"
+  },
+  {
+    "file_offset": 12599,
+    "len": 5,
+    "text": "(+2) "
+  },
+  {
+    "file_offset": 12624,
+    "len": 9,
+    "text": "(+4)  \n^4"
+  },
+  {
+    "file_offset": 12640,
+    "len": 4,
+    "text": " \n^1"
+  },
+  {
+    "file_offset": 12647,
+    "len": 5,
+    "text": "(+6) "
+  },
+  {
+    "file_offset": 12672,
+    "len": 4,
+    "text": "+9) "
+  },
+  {
+    "file_offset": 12755,
+    "len": 6,
+    "text": " #/#  "
+  },
+  {
+    "file_offset": 12770,
+    "len": 4,
+    "text": " #%\r"
+  },
+  {
+    "file_offset": 12782,
+    "len": 5,
+    "text": " 90% "
+  },
+  {
+    "file_offset": 12802,
+    "len": 8,
+    "text": " #% - # "
+  },
+  {
+    "file_offset": 12835,
+    "len": 6,
+    "text": " #%\r^2"
+  },
+  {
+    "file_offset": 12846,
+    "len": 6,
+    "text": " #    "
+  },
+  {
+    "file_offset": 12853,
+    "len": 9,
+    "text": "^4Abibas "
+  },
+  {
+    "file_offset": 12871,
+    "len": 12,
+    "text": " Adidas(+2) "
+  },
+  {
+    "file_offset": 12892,
+    "len": 15,
+    "text": " Abibas(+1) \n^4"
+  },
+  {
+    "file_offset": 12932,
+    "len": 5,
+    "text": "(+4) "
+  },
+  {
+    "file_offset": 12947,
+    "len": 5,
+    "text": "(+2) "
+  },
+  {
+    "file_offset": 12966,
+    "len": 4,
+    "text": " #.#"
+  },
+  {
+    "file_offset": 12971,
+    "len": 4,
+    "text": ".\n^4"
+  },
+  {
+    "file_offset": 13927,
+    "len": 4,
+    "text": "6O91"
+  },
+  {
+    "file_offset": 15738,
+    "len": 5,
+    "text": ": \n^1"
+  },
+  {
+    "file_offset": 15747,
+    "len": 4,
+    "text": " +1 "
+  },
+  {
+    "file_offset": 15764,
+    "len": 4,
+    "text": " +1 "
+  },
+  {
+    "file_offset": 15782,
+    "len": 4,
+    "text": " +1 "
+  },
+  {
+    "file_offset": 15796,
+    "len": 4,
+    "text": " +1 "
+  },
+  {
+    "file_offset": 15801,
+    "len": 4,
+    "text": "4;^6"
+  },
+  {
+    "file_offset": 16794,
+    "len": 5,
+    "text": "mh0^4"
+  },
+  {
+    "file_offset": 16866,
+    "len": 5,
+    "text": ". #^2"
+  },
+  {
+    "file_offset": 16879,
+    "len": 6,
+    "text": ":#/#. "
+  },
+  {
+    "file_offset": 16893,
+    "len": 4,
+    "text": " #.#"
+  },
+  {
+    "file_offset": 16935,
+    "len": 6,
+    "text": ":#/#. "
+  },
+  {
+    "file_offset": 16949,
+    "len": 4,
+    "text": " #.#"
+  },
+  {
+    "file_offset": 17816,
+    "len": 5,
+    "text": "^4 - "
+  },
+  {
+    "file_offset": 17830,
+    "len": 4,
+    "text": " \r^4"
+  },
+  {
+    "file_offset": 17887,
+    "len": 4,
+    "text": "! ^2"
+  },
+  {
+    "file_offset": 18024,
+    "len": 4,
+    "text": ".+^4"
+  },
+  {
+    "file_offset": 18107,
+    "len": 4,
+    "text": "!D^2"
+  },
+  {
+    "file_offset": 18175,
+    "len": 5,
+    "text": " #B^4"
+  },
+  {
+    "file_offset": 19082,
+    "len": 6,
+    "text": "!!!,^2"
+  },
+  {
+    "file_offset": 19111,
+    "len": 4,
+    "text": ". ^4"
+  },
+  {
+    "file_offset": 19129,
+    "len": 4,
+    "text": "!/^2"
+  },
+  {
+    "file_offset": 19153,
+    "len": 4,
+    "text": ". ^4"
+  },
+  {
+    "file_offset": 19177,
+    "len": 4,
+    "text": "!(^2"
+  },
+  {
+    "file_offset": 19217,
+    "len": 5,
+    "text": " #\r^4"
+  },
+  {
+    "file_offset": 19376,
+    "len": 4,
+    "text": ".3^4"
+  },
+  {
+    "file_offset": 19428,
+    "len": 4,
+    "text": ".\"^2"
+  },
+  {
+    "file_offset": 19488,
+    "len": 4,
+    "text": ".'^4"
+  },
+  {
+    "file_offset": 19596,
+    "len": 6,
+    "text": "run6^4"
+  },
+  {
+    "file_offset": 19653,
+    "len": 4,
+    "text": "!(^4"
+  },
+  {
+    "file_offset": 19722,
+    "len": 5,
+    "text": "! \n^4"
+  },
+  {
+    "file_offset": 19731,
+    "len": 4,
+    "text": " -1 "
+  },
+  {
+    "file_offset": 19746,
+    "len": 4,
+    "text": " -1 "
+  },
+  {
+    "file_offset": 19762,
+    "len": 4,
+    "text": " -1 "
+  },
+  {
+    "file_offset": 19774,
+    "len": 7,
+    "text": " -1 ,^4"
+  },
+  {
+    "file_offset": 19842,
+    "len": 6,
+    "text": "kos.^4"
+  },
+  {
+    "file_offset": 19915,
+    "len": 5,
+    "text": ". \"^2"
+  },
+  {
+    "file_offset": 19928,
+    "len": 6,
+    "text": ":#/#. "
+  },
+  {
+    "file_offset": 19985,
+    "len": 6,
+    "text": ":#/#. "
+  },
+  {
+    "file_offset": 20016,
+    "len": 4,
+    "text": " +2."
+  },
+  {
+    "file_offset": 20119,
+    "len": 4,
+    "text": "v ^2"
+  },
+  {
+    "file_offset": 20151,
+    "len": 5,
+    "text": "!.%^4"
+  },
+  {
+    "file_offset": 20190,
+    "len": 4,
+    "text": ".-^6"
+  },
+  {
+    "file_offset": 20236,
+    "len": 4,
+    "text": ".2^6"
+  },
+  {
+    "file_offset": 20304,
+    "len": 4,
+    "text": ".)^2"
+  },
+  {
+    "file_offset": 20389,
+    "len": 4,
+    "text": ".=^4"
+  },
+  {
+    "file_offset": 20453,
+    "len": 4,
+    "text": "f%^6"
+  },
+  {
+    "file_offset": 20491,
+    "len": 4,
+    "text": "!L^2"
+  },
+  {
+    "file_offset": 20596,
+    "len": 4,
+    "text": ".&^6"
+  },
+  {
+    "file_offset": 20635,
+    "len": 4,
+    "text": "!B^4"
+  },
+  {
+    "file_offset": 20702,
+    "len": 4,
+    "text": ".G^1"
+  },
+  {
+    "file_offset": 20774,
+    "len": 4,
+    "text": ".\n^4"
+  },
+  {
+    "file_offset": 20785,
+    "len": 4,
+    "text": ".1^1"
+  },
+  {
+    "file_offset": 20814,
+    "len": 4,
+    "text": "!!! "
+  },
+  {
+    "file_offset": 20833,
+    "len": 6,
+    "text": "!!!(^1"
+  },
+  {
+    "file_offset": 20876,
+    "len": 4,
+    "text": ".8^1"
+  },
+  {
+    "file_offset": 20979,
+    "len": 4,
+    "text": ":@^1"
+  },
+  {
+    "file_offset": 21008,
+    "len": 6,
+    "text": "!!!^6 "
+  },
+  {
+    "file_offset": 21084,
+    "len": 4,
+    "text": ".,^6"
+  },
+  {
+    "file_offset": 21264,
+    "len": 4,
+    "text": "!L^1"
+  },
+  {
+    "file_offset": 21341,
+    "len": 4,
+    "text": "!*^1"
+  },
+  {
+    "file_offset": 21426,
+    "len": 5,
+    "text": "\"!(^1"
+  },
+  {
+    "file_offset": 21468,
+    "len": 4,
+    "text": "\"-^1"
+  },
+  {
+    "file_offset": 21484,
+    "len": 11,
+    "text": " - 3, 5% - "
+  },
+  {
+    "file_offset": 21565,
+    "len": 6,
+    "text": " +2+^1"
+  },
+  {
+    "file_offset": 21655,
+    "len": 6,
+    "text": "+2)$^6"
+  },
+  {
+    "file_offset": 21778,
+    "len": 7,
+    "text": "+6).$^6"
+  },
+  {
+    "file_offset": 21818,
+    "len": 4,
+    "text": ".-^1"
+  },
+  {
+    "file_offset": 21841,
+    "len": 9,
+    "text": "+9)!!! - "
+  },
+  {
+    "file_offset": 21864,
+    "len": 4,
+    "text": ".O^2"
+  },
+  {
+    "file_offset": 21942,
+    "len": 6,
+    "text": " #.'^6"
+  },
+  {
+    "file_offset": 24264,
+    "len": 4,
+    "text": "6b91"
+  },
+  {
+    "file_offset": 26321,
+    "len": 4,
+    "text": "6b91"
+  },
+  {
+    "file_offset": 26638,
+    "len": 4,
+    "text": "6O91"
+  },
+  {
+    "file_offset": 27286,
+    "len": 4,
+    "text": "Z9P1"
+  },
+  {
+    "file_offset": 28973,
+    "len": 4,
+    "text": " ^0,"
+  },
+  {
+    "file_offset": 28992,
+    "len": 4,
+    "text": "+^0 "
+  },
+  {
+    "file_offset": 29050,
+    "len": 5,
+    "text": ":M^0 "
+  },
+  {
+    "file_offset": 29086,
+    "len": 5,
+    "text": " 12, "
+  },
+  {
+    "file_offset": 29104,
+    "len": 5,
+    "text": " # - "
+  },
+  {
+    "file_offset": 29129,
+    "len": 4,
+    "text": "K^0 "
+  },
+  {
+    "file_offset": 29162,
+    "len": 4,
+    "text": " 12 "
+  },
+  {
+    "file_offset": 29204,
+    "len": 5,
+    "text": " *^0 "
+  },
+  {
+    "file_offset": 29249,
+    "len": 6,
+    "text": "^02^0 "
+  },
+  {
+    "file_offset": 29302,
+    "len": 4,
+    "text": "B^0 "
+  },
+  {
+    "file_offset": 29314,
+    "len": 8,
+    "text": " -  +5% "
+  },
+  {
+    "file_offset": 29343,
+    "len": 5,
+    "text": " 90% "
+  },
+  {
+    "file_offset": 29382,
+    "len": 5,
+    "text": " - 5 "
+  },
+  {
+    "file_offset": 29395,
+    "len": 4,
+    "text": "$^0 "
+  },
+  {
+    "file_offset": 29433,
+    "len": 7,
+    "text": "^0 !^0 "
+  },
+  {
+    "file_offset": 29448,
+    "len": 6,
+    "text": " = 10+"
+  },
+  {
+    "file_offset": 29470,
+    "len": 4,
+    "text": ":^0 "
+  },
+  {
+    "file_offset": 29478,
+    "len": 4,
+    "text": " = ("
+  },
+  {
+    "file_offset": 29492,
+    "len": 4,
+    "text": " - ("
+  },
+  {
+    "file_offset": 29541,
+    "len": 7,
+    "text": " = (20+"
+  },
+  {
+    "file_offset": 29556,
+    "len": 8,
+    "text": "*5)%7^0 "
+  },
+  {
+    "file_offset": 29615,
+    "len": 5,
+    "text": ".B^0 "
+  },
+  {
+    "file_offset": 29682,
+    "len": 5,
+    "text": ".I^0 "
+  },
+  {
+    "file_offset": 29756,
+    "len": 5,
+    "text": ".?^0 "
+  },
+  {
+    "file_offset": 29820,
+    "len": 5,
+    "text": ".(^0 "
+  },
+  {
+    "file_offset": 29861,
+    "len": 5,
+    "text": "?N^0 "
+  },
+  {
+    "file_offset": 29871,
+    "len": 6,
+    "text": "    - "
+  },
+  {
+    "file_offset": 29941,
+    "len": 4,
+    "text": "(^0 "
+  },
+  {
+    "file_offset": 29982,
+    "len": 4,
+    "text": "Q^0 "
+  },
+  {
+    "file_offset": 29993,
+    "len": 4,
+    "text": "  - "
+  },
+  {
+    "file_offset": 30064,
+    "len": 15,
+    "text": "N^0            "
+  },
+  {
+    "file_offset": 30143,
+    "len": 4,
+    "text": "O^0 "
+  },
+  {
+    "file_offset": 30153,
+    "len": 5,
+    "text": "   - "
+  },
+  {
+    "file_offset": 30223,
+    "len": 15,
+    "text": "Q^0            "
+  },
+  {
+    "file_offset": 30304,
+    "len": 16,
+    "text": ",-^0            "
+  },
+  {
+    "file_offset": 30350,
+    "len": 5,
+    "text": ".N^0 "
+  },
+  {
+    "file_offset": 30359,
+    "len": 7,
+    "text": "     - "
+  },
+  {
+    "file_offset": 30431,
+    "len": 14,
+    "text": "^0            "
+  },
+  {
+    "file_offset": 30456,
+    "len": 4,
+    "text": "7^0 "
+  },
+  {
+    "file_offset": 30467,
+    "len": 4,
+    "text": "  - "
+  },
+  {
+    "file_offset": 30512,
+    "len": 4,
+    "text": "P^0 "
+  },
+  {
+    "file_offset": 30522,
+    "len": 5,
+    "text": "   - "
+  },
+  {
+    "file_offset": 30593,
+    "len": 15,
+    "text": "P^0            "
+  },
+  {
+    "file_offset": 30673,
+    "len": 4,
+    "text": ")R^0"
+  },
+  {
+    "file_offset": 30720,
+    "len": 7,
+    "text": " G.exe:"
+  },
+  {
+    "file_offset": 31760,
+    "len": 11,
+    "text": "save_r?.sav"
+  },
+  {
+    "file_offset": 31886,
+    "len": 4,
+    "text": ". 1-"
+  },
+  {
+    "file_offset": 31905,
+    "len": 6,
+    "text": "save_r"
+  },
+  {
+    "file_offset": 31912,
+    "len": 4,
+    "text": ".sav"
+  },
+  {
+    "file_offset": 31931,
+    "len": 18,
+    "text": " save_r\nplaces.sav"
+  },
+  {
+    "file_offset": 31964,
+    "len": 10,
+    "text": " places=^6"
+  },
+  {
+    "file_offset": 32009,
+    "len": 8,
+    "text": " Places:"
+  },
+  {
+    "file_offset": 32025,
+    "len": 11,
+    "text": " Default7^6"
+  },
+  {
+    "file_offset": 32078,
+    "len": 51,
+    "text": ", Default:1'^4Gopnik: ^7version 1.02 june,sept 2003"
+  },
+  {
+    "file_offset": 32133,
+    "len": 6,
+    "text": " 2xxx "
+  },
+  {
+    "file_offset": 32274,
+    "len": 6,
+    "text": "...7^6"
+  },
+  {
+    "file_offset": 32349,
+    "len": 4,
+    "text": "?A^6"
+  },
+  {
+    "file_offset": 32378,
+    "len": 4,
+    "text": "!!! "
+  },
+  {
+    "file_offset": 32415,
+    "len": 4,
+    "text": ".:^4"
+  },
+  {
+    "file_offset": 32687,
+    "len": 4,
+    "text": "?7^1"
+  },
+  {
+    "file_offset": 32742,
+    "len": 5,
+    "text": ").A^1"
+  },
+  {
+    "file_offset": 32808,
+    "len": 5,
+    "text": ")..^1"
+  },
+  {
+    "file_offset": 32856,
+    "len": 4,
+    "text": ")4^1"
+  },
+  {
+    "file_offset": 32944,
+    "len": 5,
+    "text": ":^7 \r"
+  },
+  {
+    "file_offset": 32963,
+    "len": 6,
+    "text": "^7 \"^1"
+  },
+  {
+    "file_offset": 33000,
+    "len": 4,
+    "text": "./^1"
+  },
+  {
+    "file_offset": 33048,
+    "len": 4,
+    "text": ".(^1"
+  },
+  {
+    "file_offset": 33120,
+    "len": 4,
+    "text": ".&^1"
+  },
+  {
+    "file_offset": 33157,
+    "len": 6,
+    "text": "...'^1"
+  },
+  {
+    "file_offset": 33224,
+    "len": 6,
+    "text": "...)^1"
+  },
+  {
+    "file_offset": 33268,
+    "len": 4,
+    "text": ".#^1"
+  },
+  {
+    "file_offset": 33302,
+    "len": 4,
+    "text": "...;"
+  },
+  {
+    "file_offset": 33427,
+    "len": 7,
+    "text": " ^6i^7 "
+  },
+  {
+    "file_offset": 33465,
+    "len": 10,
+    "text": " ^6help^7 "
+  },
+  {
+    "file_offset": 33678,
+    "len": 6,
+    "text": ">+=0tB"
+  },
+  {
+    "file_offset": 33751,
+    "len": 5,
+    "text": ">+=0u"
+  },
+  {
+    "file_offset": 33839,
+    "len": 5,
+    "text": ">1=2t"
+  },
+  {
+    "file_offset": 33846,
+    "len": 5,
+    "text": ">1=3t"
+  },
+  {
+    "file_offset": 33853,
+    "len": 5,
+    "text": ">1=4t"
+  },
+  {
+    "file_offset": 33860,
+    "len": 6,
+    "text": ">1=5t\n"
+  },
+  {
+    "file_offset": 33867,
+    "len": 5,
+    "text": ">1=0t"
+  },
+  {
+    "file_offset": 36082,
+    "len": 4,
+    "text": "...7"
+  },
+  {
+    "file_offset": 36220,
+    "len": 25,
+    "text": "save_r0.sav\nplaces.sav.^0"
+  },
+  {
+    "file_offset": 36254,
+    "len": 4,
+    "text": "! ^1"
+  },
+  {
+    "file_offset": 36315,
+    "len": 4,
+    "text": "!+^6"
+  },
+  {
+    "file_offset": 37042,
+    "len": 5,
+    "text": ".\"+^1"
+  },
+  {
+    "file_offset": 37197,
+    "len": 4,
+    "text": "+^2\""
+  },
+  {
+    "file_offset": 37239,
+    "len": 5,
+    "text": "\". ^1"
+  },
+  {
+    "file_offset": 37272,
+    "len": 5,
+    "text": "!\"9^1"
+  },
+  {
+    "file_offset": 37348,
+    "len": 4,
+    "text": "...2"
+  },
+  {
+    "file_offset": 37427,
+    "len": 5,
+    "text": ".8^2\""
+  },
+  {
+    "file_offset": 37464,
+    "len": 5,
+    "text": "\". - "
+  },
+  {
+    "file_offset": 37482,
+    "len": 6,
+    "text": "...(^1"
+  },
+  {
+    "file_offset": 37527,
+    "len": 5,
+    "text": "^2 - "
+  },
+  {
+    "file_offset": 37553,
+    "len": 6,
+    "text": "^1 - \""
+  },
+  {
+    "file_offset": 37590,
+    "len": 5,
+    "text": "..3^1"
+  },
+  {
+    "file_offset": 37643,
+    "len": 4,
+    "text": "\" ^1"
+  },
+  {
+    "file_offset": 37723,
+    "len": 4,
+    "text": "! ^1"
+  },
+  {
+    "file_offset": 37756,
+    "len": 4,
+    "text": "!#^1"
+  },
+  {
+    "file_offset": 37868,
+    "len": 5,
+    "text": "\"1^1\""
+  },
+  {
+    "file_offset": 37959,
+    "len": 4,
+    "text": "\"-^1"
+  },
+  {
+    "file_offset": 37975,
+    "len": 11,
+    "text": " - 3, 5% - "
+  },
+  {
+    "file_offset": 38034,
+    "len": 4,
+    "text": "!8^1"
+  },
+  {
+    "file_offset": 38101,
+    "len": 6,
+    "text": " #!4^1"
+  },
+  {
+    "file_offset": 38196,
+    "len": 4,
+    "text": "...U"
+  },
+  {
+    "file_offset": 39926,
+    "len": 6,
+    "text": "save_r"
+  },
+  {
+    "file_offset": 39933,
+    "len": 4,
+    "text": ".sav"
+  },
+  {
+    "file_offset": 39951,
+    "len": 10,
+    "text": " save_r(^1"
+  },
+  {
+    "file_offset": 40029,
+    "len": 4,
+    "text": ".&^1"
+  },
+  {
+    "file_offset": 40066,
+    "len": 6,
+    "text": "...'^1"
+  },
+  {
+    "file_offset": 40133,
+    "len": 6,
+    "text": "...)^1"
+  },
+  {
+    "file_offset": 40177,
+    "len": 4,
+    "text": ".#^1"
+  },
+  {
+    "file_offset": 40211,
+    "len": 6,
+    "text": "...7^1"
+  },
+  {
+    "file_offset": 40313,
+    "len": 4,
+    "text": " -2."
+  },
+  {
+    "file_offset": 40425,
+    "len": 6,
+    "text": ",/^6? "
+  },
+  {
+    "file_offset": 40473,
+    "len": 6,
+    "text": "))^6? "
+  },
+  {
+    "file_offset": 40535,
+    "len": 4,
+    "text": "?\n^2"
+  },
+  {
+    "file_offset": 40572,
+    "len": 4,
+    "text": "?0^2"
+  },
+  {
+    "file_offset": 40642,
+    "len": 4,
+    "text": "):^5"
+  },
+  {
+    "file_offset": 40842,
+    "len": 4,
+    "text": ".&^1"
+  },
+  {
+    "file_offset": 40899,
+    "len": 4,
+    "text": ".9^1"
+  },
+  {
+    "file_offset": 40956,
+    "len": 5,
+    "text": "\".D^1"
+  },
+  {
+    "file_offset": 41024,
+    "len": 6,
+    "text": "!\".'^2"
+  },
+  {
+    "file_offset": 41066,
+    "len": 4,
+    "text": ".*^2"
+  },
+  {
+    "file_offset": 41122,
+    "len": 4,
+    "text": "! # "
+  },
+  {
+    "file_offset": 41140,
+    "len": 4,
+    "text": "!5^6"
+  },
+  {
+    "file_offset": 41194,
+    "len": 4,
+    "text": ".'^6"
+  },
+  {
+    "file_offset": 41373,
+    "len": 4,
+    "text": ".,^5"
+  },
+  {
+    "file_offset": 41418,
+    "len": 4,
+    "text": "?8^5"
+  },
+  {
+    "file_offset": 41475,
+    "len": 4,
+    "text": "\"G^4"
+  },
+  {
+    "file_offset": 41525,
+    "len": 5,
+    "text": "\". - "
+  },
+  {
+    "file_offset": 41609,
+    "len": 5,
+    "text": "?0 # "
+  },
+  {
+    "file_offset": 41690,
+    "len": 4,
+    "text": ".$^6"
+  },
+  {
+    "file_offset": 41727,
+    "len": 4,
+    "text": ".;^2"
+  },
+  {
+    "file_offset": 41763,
+    "len": 4,
+    "text": "... "
+  },
+  {
+    "file_offset": 41905,
+    "len": 4,
+    "text": "\"\n^4"
+  },
+  {
+    "file_offset": 42029,
+    "len": 4,
+    "text": "mar-"
+  },
+  {
+    "file_offset": 42058,
+    "len": 9,
+    "text": "  ^6w^7  "
+  },
+  {
+    "file_offset": 42117,
+    "len": 8,
+    "text": "(^6t^7)."
+  },
+  {
+    "file_offset": 42147,
+    "len": 9,
+    "text": "^61^7 - ^"
+  },
+  {
+    "file_offset": 42157,
+    "len": 4,
+    "text": "#^7 "
+  },
+  {
+    "file_offset": 42173,
+    "len": 5,
+    "text": "(3-4 "
+  },
+  {
+    "file_offset": 42181,
+    "len": 9,
+    "text": "^62^7 - ^"
+  },
+  {
+    "file_offset": 42191,
+    "len": 4,
+    "text": "#^7 "
+  },
+  {
+    "file_offset": 42210,
+    "len": 14,
+    "text": "^63^7 - ^/#^7 "
+  },
+  {
+    "file_offset": 42268,
+    "len": 14,
+    "text": "^64^7 - ^?#^7 "
+  },
+  {
+    "file_offset": 42313,
+    "len": 8,
+    "text": " abibas("
+  },
+  {
+    "file_offset": 42342,
+    "len": 14,
+    "text": "^65^7 - ^)#^7 "
+  },
+  {
+    "file_offset": 42394,
+    "len": 14,
+    "text": "^66^7 - ^E#^7 "
+  },
+  {
+    "file_offset": 42474,
+    "len": 14,
+    "text": "^67^7 - ^?#^7 "
+  },
+  {
+    "file_offset": 42519,
+    "len": 8,
+    "text": " adidas("
+  },
+  {
+    "file_offset": 42548,
+    "len": 14,
+    "text": "^68^7 - ^\"#^7 "
+  },
+  {
+    "file_offset": 42593,
+    "len": 14,
+    "text": "^69^7 - ^&#^7 "
+  },
+  {
+    "file_offset": 42637,
+    "len": 4,
+    "text": " +4)"
+  },
+  {
+    "file_offset": 42651,
+    "len": 4,
+    "text": "1-^4"
+  },
+  {
+    "file_offset": 42697,
+    "len": 4,
+    "text": ".(^4"
+  },
+  {
+    "file_offset": 43031,
+    "len": 4,
+    "text": ".\"^6"
+  },
+  {
+    "file_offset": 43414,
+    "len": 5,
+    "text": " \n # "
+  },
+  {
+    "file_offset": 43425,
+    "len": 4,
+    "text": ".!^6"
+  },
+  {
+    "file_offset": 43458,
+    "len": 5,
+    "text": "!.3^6"
+  },
+  {
+    "file_offset": 43511,
+    "len": 4,
+    "text": ".+^6"
+  },
+  {
+    "file_offset": 43557,
+    "len": 5,
+    "text": "bmar."
+  },
+  {
+    "file_offset": 43588,
+    "len": 9,
+    "text": "  ^6w^7  "
+  },
+  {
+    "file_offset": 43634,
+    "len": 8,
+    "text": "(^6x^7) "
+  },
+  {
+    "file_offset": 43694,
+    "len": 10,
+    "text": " - ^6wes^7"
+  },
+  {
+    "file_offset": 43705,
+    "len": 4,
+    "text": "#^7 "
+  },
+  {
+    "file_offset": 43719,
+    "len": 5,
+    "text": "5#^7 "
+  },
+  {
+    "file_offset": 43772,
+    "len": 6,
+    "text": ")'#^7 "
+  },
+  {
+    "file_offset": 43812,
+    "len": 6,
+    "text": ")b#^7 "
+  },
+  {
+    "file_offset": 43871,
+    "len": 6,
+    "text": " -50%("
+  },
+  {
+    "file_offset": 43913,
+    "len": 4,
+    "text": "#^7 "
+  },
+  {
+    "file_offset": 43933,
+    "len": 8,
+    "text": "+2))#^7 "
+  },
+  {
+    "file_offset": 43958,
+    "len": 5,
+    "text": "+4), "
+  },
+  {
+    "file_offset": 43978,
+    "len": 5,
+    "text": "V#^7 "
+  },
+  {
+    "file_offset": 44045,
+    "len": 9,
+    "text": " - ^6f^7 "
+  },
+  {
+    "file_offset": 44058,
+    "len": 7,
+    "text": "(#-#))."
+  },
+  {
+    "file_offset": 44066,
+    "len": 4,
+    "text": "#^7 "
+  },
+  {
+    "file_offset": 44082,
+    "len": 5,
+    "text": " - 6."
+  },
+  {
+    "file_offset": 44088,
+    "len": 4,
+    "text": "#^7 "
+  },
+  {
+    "file_offset": 44241,
+    "len": 4,
+    "text": "!\n^1"
+  },
+  {
+    "file_offset": 44249,
+    "len": 4,
+    "text": " +1 "
+  },
+  {
+    "file_offset": 44264,
+    "len": 4,
+    "text": " +1 "
+  },
+  {
+    "file_offset": 44280,
+    "len": 4,
+    "text": " +1 "
+  },
+  {
+    "file_offset": 44292,
+    "len": 7,
+    "text": " +1 \r^2"
+  },
+  {
+    "file_offset": 44309,
+    "len": 4,
+    "text": ".,^6"
+  },
+  {
+    "file_offset": 44457,
+    "len": 4,
+    "text": ".6^6"
+  },
+  {
+    "file_offset": 44619,
+    "len": 4,
+    "text": ".5^6"
+  },
+  {
+    "file_offset": 44712,
+    "len": 6,
+    "text": "!!!B^0"
+  },
+  {
+    "file_offset": 44959,
+    "len": 4,
+    "text": "x!^6"
+  },
+  {
+    "file_offset": 45019,
+    "len": 6,
+    "text": "wes-^2"
+  },
+  {
+    "file_offset": 45106,
+    "len": 6,
+    "text": " #.0^2"
+  },
+  {
+    "file_offset": 45183,
+    "len": 6,
+    "text": " #..^2"
+  },
+  {
+    "file_offset": 45256,
+    "len": 6,
+    "text": " #.2^2"
+  },
+  {
+    "file_offset": 45332,
+    "len": 6,
+    "text": " #.1^2"
+  },
+  {
+    "file_offset": 45408,
+    "len": 6,
+    "text": " #.2^2"
+  },
+  {
+    "file_offset": 45515,
+    "len": 4,
+    "text": " i^6"
+  },
+  {
+    "file_offset": 45623,
+    "len": 4,
+    "text": "rep:"
+  },
+  {
+    "file_offset": 45666,
+    "len": 9,
+    "text": "  ^6w^7  "
+  },
+  {
+    "file_offset": 45732,
+    "len": 10,
+    "text": "  ^2h^7 - "
+  },
+  {
+    "file_offset": 45747,
+    "len": 4,
+    "text": "3^7 "
+  },
+  {
+    "file_offset": 45771,
+    "len": 10,
+    "text": "  ^2r^7 - "
+  },
+  {
+    "file_offset": 45786,
+    "len": 4,
+    "text": "7^7 "
+  },
+  {
+    "file_offset": 45857,
+    "len": 4,
+    "text": "r-^0"
+  },
+  {
+    "file_offset": 45929,
+    "len": 4,
+    "text": ".'^4"
+  },
+  {
+    "file_offset": 45971,
+    "len": 4,
+    "text": "h(^0"
+  },
+  {
+    "file_offset": 46012,
+    "len": 4,
+    "text": "!9^0"
+  },
+  {
+    "file_offset": 46070,
+    "len": 4,
+    "text": ". ^6"
+  },
+  {
+    "file_offset": 46138,
+    "len": 4,
+    "text": " #/#"
+  },
+  {
+    "file_offset": 46143,
+    "len": 4,
+    "text": "e)^6"
+  },
+  {
+    "file_offset": 46187,
+    "len": 4,
+    "text": "girl"
+  },
+  {
+    "file_offset": 46219,
+    "len": 4,
+    "text": ".@^2"
+  },
+  {
+    "file_offset": 46284,
+    "len": 4,
+    "text": ".(^6"
+  },
+  {
+    "file_offset": 46315,
+    "len": 4,
+    "text": " 12 "
+  },
+  {
+    "file_offset": 46325,
+    "len": 4,
+    "text": ".F^2"
+  },
+  {
+    "file_offset": 46396,
+    "len": 4,
+    "text": ".*^6"
+  },
+  {
+    "file_offset": 46469,
+    "len": 8,
+    "text": "fight2^6"
+  },
+  {
+    "file_offset": 46499,
+    "len": 7,
+    "text": " ^6w^7 "
+  },
+  {
+    "file_offset": 46687,
+    "len": 4,
+    "text": ".\"^6"
+  },
+  {
+    "file_offset": 46730,
+    "len": 7,
+    "text": " ^6w^7 "
+  },
+  {
+    "file_offset": 46754,
+    "len": 8,
+    "text": " ^!p^7  "
+  },
+  {
+    "file_offset": 46791,
+    "len": 5,
+    "text": "r^7  "
+  },
+  {
+    "file_offset": 46823,
+    "len": 8,
+    "text": " ^6hp^7 "
+  },
+  {
+    "file_offset": 46885,
+    "len": 8,
+    "text": " ^6s^7  "
+  },
+  {
+    "file_offset": 46922,
+    "len": 8,
+    "text": " ^6a^7  "
+  },
+  {
+    "file_offset": 46957,
+    "len": 7,
+    "text": " ^6d^7 "
+  },
+  {
+    "file_offset": 46994,
+    "len": 4,
+    "text": "p7^2"
+  },
+  {
+    "file_offset": 47071,
+    "len": 4,
+    "text": ".8^2"
+  },
+  {
+    "file_offset": 47216,
+    "len": 8,
+    "text": " = #.#^0"
+  },
+  {
+    "file_offset": 47258,
+    "len": 4,
+    "text": "a2^0"
+  },
+  {
+    "file_offset": 47547,
+    "len": 5,
+    "text": "kl\"^6"
+  },
+  {
+    "file_offset": 47608,
+    "len": 9,
+    "text": "  ^6w^7  "
+  },
+  {
+    "file_offset": 47656,
+    "len": 8,
+    "text": " (^6p^7 "
+  },
+  {
+    "file_offset": 47689,
+    "len": 14,
+    "text": " 1 -  ^,15^7  "
+  },
+  {
+    "file_offset": 47737,
+    "len": 4,
+    "text": " +1)"
+  },
+  {
+    "file_offset": 47742,
+    "len": 14,
+    "text": " 2 -  ^,22^7  "
+  },
+  {
+    "file_offset": 47790,
+    "len": 4,
+    "text": " +1)"
+  },
+  {
+    "file_offset": 47904,
+    "len": 4,
+    "text": " - #"
+  },
+  {
+    "file_offset": 47932,
+    "len": 4,
+    "text": "!.^6"
+  },
+  {
+    "file_offset": 48117,
+    "len": 4,
+    "text": ".,^6"
+  },
+  {
+    "file_offset": 48164,
+    "len": 4,
+    "text": "trn-"
+  },
+  {
+    "file_offset": 48194,
+    "len": 9,
+    "text": "  ^6w^7  "
+  },
+  {
+    "file_offset": 48213,
+    "len": 7,
+    "text": "*20^7  "
+  },
+  {
+    "file_offset": 48252,
+    "len": 11,
+    "text": " +1)-20^7  "
+  },
+  {
+    "file_offset": 48298,
+    "len": 4,
+    "text": " +1)"
+  },
+  {
+    "file_offset": 48303,
+    "len": 7,
+    "text": " 3 -  ^"
+  },
+  {
+    "file_offset": 48311,
+    "len": 6,
+    "text": "10^7  "
+  },
+  {
+    "file_offset": 48342,
+    "len": 14,
+    "text": " 4 -  ^=30^7  "
+  },
+  {
+    "file_offset": 48385,
+    "len": 6,
+    "text": "(-75% "
+  },
+  {
+    "file_offset": 48412,
+    "len": 7,
+    "text": " 5 -  ^"
+  },
+  {
+    "file_offset": 48420,
+    "len": 6,
+    "text": "20^7  "
+  },
+  {
+    "file_offset": 48447,
+    "len": 7,
+    "text": " +1)\n^0"
+  },
+  {
+    "file_offset": 48533,
+    "len": 7,
+    "text": " +1 .^6"
+  },
+  {
+    "file_offset": 48604,
+    "len": 6,
+    "text": "^1 +# "
+  },
+  {
+    "file_offset": 48738,
+    "len": 4,
+    "text": ".\n^1"
+  },
+  {
+    "file_offset": 48747,
+    "len": 6,
+    "text": " +11^6"
+  },
+  {
+    "file_offset": 48880,
+    "len": 6,
+    "text": "kos.^4"
+  },
+  {
+    "file_offset": 48953,
+    "len": 5,
+    "text": ". \"^2"
+  },
+  {
+    "file_offset": 48966,
+    "len": 6,
+    "text": ":#/#. "
+  },
+  {
+    "file_offset": 49023,
+    "len": 6,
+    "text": ":#/#. "
+  },
+  {
+    "file_offset": 49055,
+    "len": 4,
+    "text": " +2."
+  },
+  {
+    "file_offset": 49127,
+    "len": 11,
+    "text": ": ^6w^7    "
+  },
+  {
+    "file_offset": 49209,
+    "len": 11,
+    "text": ": ^6mar^7  "
+  },
+  {
+    "file_offset": 49246,
+    "len": 11,
+    "text": ": ^6bmar^7 "
+  },
+  {
+    "file_offset": 49284,
+    "len": 11,
+    "text": ": ^6rep^7  "
+  },
+  {
+    "file_offset": 49325,
+    "len": 11,
+    "text": ": ^6girl^7 "
+  },
+  {
+    "file_offset": 49376,
+    "len": 11,
+    "text": ": ^6pr^7   "
+  },
+  {
+    "file_offset": 49428,
+    "len": 11,
+    "text": ": ^6kl^7   "
+  },
+  {
+    "file_offset": 49463,
+    "len": 11,
+    "text": ": ^6trn^7  "
+  },
+  {
+    "file_offset": 49501,
+    "len": 11,
+    "text": ": ^6s^7    "
+  },
+  {
+    "file_offset": 49564,
+    "len": 11,
+    "text": ": ^6sv^7   "
+  },
+  {
+    "file_offset": 49619,
+    "len": 11,
+    "text": ": ^6k^7    "
+  },
+  {
+    "file_offset": 49687,
+    "len": 11,
+    "text": ": ^6v^7    "
+  },
+  {
+    "file_offset": 49731,
+    "len": 11,
+    "text": ": ^6kos^7  "
+  },
+  {
+    "file_offset": 49768,
+    "len": 11,
+    "text": ": ^6h^7    "
+  },
+  {
+    "file_offset": 49832,
+    "len": 11,
+    "text": ": ^6mh^7   "
+  },
+  {
+    "file_offset": 49878,
+    "len": 11,
+    "text": ": ^6name^7 "
+  },
+  {
+    "file_offset": 49918,
+    "len": 11,
+    "text": ": ^6e^7    "
+  },
+  {
+    "file_offset": 49949,
+    "len": 4,
+    "text": "f\"^6"
+  },
+  {
+    "file_offset": 49986,
+    "len": 4,
+    "text": "k8^6"
+  },
+  {
+    "file_offset": 50045,
+    "len": 4,
+    "text": "name"
+  },
+  {
+    "file_offset": 50062,
+    "len": 4,
+    "text": ":^7 "
+  },
+  {
+    "file_offset": 50083,
+    "len": 5,
+    "text": ":^7 \r"
+  },
+  {
+    "file_offset": 50106,
+    "len": 47,
+    "text": "version'^4Gopnik: ^7version 1.02 june,sept 2003"
+  },
+  {
+    "file_offset": 50154,
+    "len": 4,
+    "text": "help"
+  },
+  {
+    "file_offset": 50159,
+    "len": 7,
+    "text": "exit&^6"
+  },
+  {
+    "file_offset": 51375,
+    "len": 4,
+    "text": "8d|?"
+  },
+  {
+    "file_offset": 52231,
+    "len": 4,
+    "text": "6t;1"
+  },
+  {
+    "file_offset": 52269,
+    "len": 5,
+    "text": ">q9\nr"
+  },
+  {
+    "file_offset": 53020,
+    "len": 4,
+    "text": "6\\91"
+  },
+  {
+    "file_offset": 53150,
+    "len": 4,
+    "text": "6\\91"
+  },
+  {
+    "file_offset": 53312,
+    "len": 4,
+    "text": "6\\91"
+  },
+  {
+    "file_offset": 56407,
+    "len": 4,
+    "text": "6t;1"
+  },
+  {
+    "file_offset": 56559,
+    "len": 4,
+    "text": "6\\91"
+  },
+  {
+    "file_offset": 62350,
+    "len": 4,
+    "text": "8d| "
+  },
+  {
+    "file_offset": 62740,
+    "len": 4,
+    "text": "6\\91"
+  },
+  {
+    "file_offset": 64160,
+    "len": 4,
+    "text": "6\\91"
+  },
+  {
+    "file_offset": 68072,
+    "len": 4,
+    "text": "=Ar1"
+  },
+  {
+    "file_offset": 68088,
+    "len": 4,
+    "text": "=Zw!"
+  },
+  {
+    "file_offset": 69115,
+    "len": 4,
+    "text": "tDI<"
+  },
+  {
+    "file_offset": 69132,
+    "len": 9,
+    "text": "tF<\rtO< r"
+  },
+  {
+    "file_offset": 69223,
+    "len": 4,
+    "text": "\r\nCC"
+  },
+  {
+    "file_offset": 69304,
+    "len": 4,
+    "text": "\nSQR"
+  },
+  {
+    "file_offset": 69320,
+    "len": 10,
+    "text": "t-<\rt3<\nt5"
+  },
+  {
+    "file_offset": 69464,
+    "len": 11,
+    "text": "t,<\nt5<\rt9G"
+  },
+  {
+    "file_offset": 69598,
+    "len": 5,
+    "text": "tcQRW"
+  },
+  {
+    "file_offset": 69962,
+    "len": 7,
+    "text": "X[YZ^_]"
+  },
+  {
+    "file_offset": 70156,
+    "len": 4,
+    "text": "v6t)"
+  },
+  {
+    "file_offset": 70267,
+    "len": 4,
+    "text": "0<:r"
+  },
+  {
+    "file_offset": 70284,
+    "len": 30,
+    "text": "!#$456789:;<=>?uRuntime error "
+  },
+  {
+    "file_offset": 70315,
+    "len": 4,
+    "text": " at "
+  },
+  {
+    "file_offset": 70324,
+    "len": 39,
+    "text": "Portions Copyright (c) 1983,92 Borland3"
+  },
+  {
+    "file_offset": 70908,
+    "len": 6,
+    "text": "&;w\nt+"
+  },
+  {
+    "file_offset": 70957,
+    "len": 4,
+    "text": "PQRW"
+  },
+  {
+    "file_offset": 70968,
+    "len": 5,
+    "text": "_ZYX&"
+  },
+  {
+    "file_offset": 70976,
+    "len": 5,
+    "text": "&;w\nu"
+  },
+  {
+    "file_offset": 71122,
+    "len": 5,
+    "text": "u\rPRV"
+  },
+  {
+    "file_offset": 71916,
+    "len": 4,
+    "text": ";F\nt"
+  },
+  {
+    "file_offset": 72031,
+    "len": 4,
+    "text": ":\\FF"
+  },
+  {
+    "file_offset": 72096,
+    "len": 4,
+    "text": ":u $"
+  },
+  {
+    "file_offset": 73299,
+    "len": 4,
+    "text": "<)sg"
+  },
+  {
+    "file_offset": 73557,
+    "len": 6,
+    "text": "WVQUSP"
+  },
+  {
+    "file_offset": 73824,
+    "len": 4,
+    "text": "[ZY]"
+  },
+  {
+    "file_offset": 74381,
+    "len": 6,
+    "text": "NGItL&"
+  },
+  {
+    "file_offset": 74388,
+    "len": 5,
+    "text": "=$tH&"
+  },
+  {
+    "file_offset": 74635,
+    "len": 4,
+    "text": "+N\n3"
+  }
+]
