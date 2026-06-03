@@ -51,7 +51,37 @@ footer.chrome {
   padding: 1rem;
   color: var(--muted);
 }
-footer.chrome small { font-size: 0.55rem; line-height: 1.7; letter-spacing: 0.1em; }
+footer.chrome small { display: block; font-size: 0.55rem; line-height: 1.7; letter-spacing: 0.1em; }
+footer.chrome .ghstar {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-family: var(--chrome-font);
+  font-size: 0.55rem;
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-decoration: none;
+}
+footer.chrome .ghstar-link {
+  color: var(--phosphor);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-shadow: 0 0 6px var(--phosphor-glow);
+  transition: text-shadow 0.15s;
+}
+footer.chrome .ghstar:hover .ghstar-link {
+  text-shadow: 0 0 4px var(--phosphor), 0 0 12px var(--phosphor-glow);
+}
+footer.chrome .ghstar-icon {
+  display: inline-block;
+  margin-left: 0.45em;
+  font-size: 1.6em;
+  line-height: 0;
+  vertical-align: -0.2em;
+  text-decoration: none;
+  color: #ffd84a;
+  text-shadow: 0 0 6px rgba(255, 216, 74, 0.5);
+}
 
 main {
   display: flex;
