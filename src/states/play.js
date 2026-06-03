@@ -4,10 +4,10 @@
 // Market/dealer: EXE @ 0xA4AD / 0xAA25 / 0xAB89 / 0xBCD6
 // Rector: EXE @ 0x464A / 0x5128 / 0x505A
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=57';
-import { armVictory, VICTORY_RANK, FINAL_RANK } from './victory.js?v=57';
-import { rankForRep } from './ranks.js?v=57';
-import { downloadSave, pickSaveFile, importSave, downloadLog } from '../save_transfer.js?v=57';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=59';
+import { armVictory, VICTORY_RANK, FINAL_RANK } from './victory.js?v=59';
+import { rankForRep } from './ranks.js?v=59';
+import { downloadSave, pickSaveFile, importSave, downloadLog } from '../save_transfer.js?v=59';
 
 // ── Help table ────────────────────────────────────────────────────────────────
 const HELP = [
@@ -64,15 +64,22 @@ export const CLASS_LIST = [
 const CLASS_BY_KEY = Object.fromEntries(CLASS_LIST.map(c => [c.key, c]));
 function curClass() { return CLASS_BY_KEY[STATE.klass] || CLASS_LIST[0]; }
 
-// Понтовость (street-cred) caps at 12 (EXE @ 0x595B: "# из 12 шансов").
-const PONT_MAX = 12;
-// Понт thresholds that gate locations/actions. The EXE confirms a club/backup
-// понт gate existed but not the exact values, so these are tuned for feel: high
-// enough that one round of beer (the притон's diminishing +3/+4) no longer
-// unlocks everything — backup/club take a real cred grind to reach.
-const PONT_GATE_CLUB   = 4;  // kl — войти в клуб
-const PONT_GATE_BACKUP = 6;  // v  — позвать подкрепление
-const PONT_GATE_BORROW = 3;  // r  — занять денег на пиво в притоне
+// Понтовость cap scales with district: more headroom as you go deeper.
+// (EXE @ 0x595B anchor; extended for the port's 3-district arc.)
+const _PONT_MAX_TABLE    = [12, 16, 20];
+function pontMax() { return _PONT_MAX_TABLE[STATE.district] ?? 12; }
+
+// Понт thresholds that gate locations/actions. Scale proportionally with district max
+// (~33% club, 50% backup, 25% borrow) so the grind stays consistent across districts.
+const _PONT_CLUB_TABLE   = [4,  5,  6];
+const _PONT_BACKUP_TABLE = [6,  8, 10];
+const _PONT_BORROW_TABLE = [3,  4,  5];
+function pontGateClub()   { return _PONT_CLUB_TABLE[STATE.district]   ?? 4; }
+function pontGateBackup() { return _PONT_BACKUP_TABLE[STATE.district] ?? 6; }
+function pontGateBorrow() { return _PONT_BORROW_TABLE[STATE.district] ?? 3; }
+
+const _BOSS_KILL_GATE = [5, 6, 7];
+function bossKillGate() { return _BOSS_KILL_GATE[STATE.district] ?? 5; }
 
 // ── Player state ──────────────────────────────────────────────────────────────
 // Здоровье = 10 + Живучесть*5 + Сила  (EXE @ 0x72F9 / FUN_1000_6a0d @ 1542)
@@ -100,7 +107,7 @@ const DEFAULT_STATE = {
   temple_visits: 0,   // сколько раз молился в храме божьем (меняет реплики Бога)
   junk: [],           // ненужные вещи — продаются барыгам (wes/x), EXE @ 0xB00D
   district: 0,        // 0=Ельцовка, 1=ОбьГЭС, 2=Шлюз (EXE @ 0x8143 / 0x9c40)
-  district_kills: 0,  // wins in the current district; boss appears at >= 5
+  district_kills: 0,  // wins in the current district; boss appears at >= bossKillGate()
   found: {},          // discovered locations in the *current* district (EXE @ 0x4331)
   rector_done: false, // the *final* boss (Ректор НГУ) has been beaten
   rank: null,         // awarded погоняло (boss kills) — EXE @ 0x157F2 / 0x158F3
@@ -155,7 +162,7 @@ function migrateState(base, hadSave) {
   }
   if (!CLASS_BY_KEY[merged.klass]) merged.klass = 'pacan';  // pre-class saves
   if (typeof merged.pont !== 'number' || isNaN(merged.pont)) merged.pont = 0;
-  merged.pont = Math.max(0, Math.min(PONT_MAX, merged.pont));
+  merged.pont = Math.max(0, Math.min(pontMax(), merged.pont));
   if (typeof merged.ammo !== 'number' || isNaN(merged.ammo)) merged.ammo = 0;  // pre-gun saves
   merged.has_gun   = !!merged.has_gun;
   merged.shades    = !!merged.shades;
@@ -1078,8 +1085,8 @@ function handleDealerPurchase(idx) {
     STATE.jacket = { name: item.name, armor: item.jacket.armor };
     println(`^1Накинул: ${item.name} (защита+${item.jacket.armor}). -${cost}р.${disc}`, 0xA);
     if (item.jacket.pont) {
-      STATE.pont = Math.min(PONT_MAX, STATE.pont + item.jacket.pont);
-      println(`^1Понтовость увеличивается: +${item.jacket.pont}. Теперь ${STATE.pont}/${PONT_MAX}.`, 0xD);
+      STATE.pont = Math.min(pontMax(), STATE.pont + item.jacket.pont);
+      println(`^1Понтовость увеличивается: +${item.jacket.pont}. Теперь ${STATE.pont}/${pontMax()}.`, 0xD);
     }
     println(`^7Деньги: ${STATE.money}р`, 0x7);
     return;
@@ -1096,8 +1103,8 @@ function handleDealerPurchase(idx) {
     STATE.weapon_name = item.name; STATE.weapon_dmg = item.dmg;
     println(`^1Купил ${item.name} (урон+${item.dmg}). -${cost}р.${disc}`, 0xA);
     if (item.pont) {
-      STATE.pont = Math.min(PONT_MAX, STATE.pont + item.pont);
-      println(`^1Понтовость увеличивается: +${item.pont}. Теперь ${STATE.pont}/${PONT_MAX}.`, 0xD);
+      STATE.pont = Math.min(pontMax(), STATE.pont + item.pont);
+      println(`^1Понтовость увеличивается: +${item.pont}. Теперь ${STATE.pont}/${pontMax()}.`, 0xD);
     }
   }
   // Armor / gear
@@ -1181,7 +1188,7 @@ function denMenu() {
   println('  ^6a ^7 - разузнать, где что в районе', 0x7);
   println('  ^6d ^7 - пойти на дело (воровать деньги)', 0x7);
   println('  ^6s ^7 - спросить про свою понтовость', 0x7);
-  println(`  ^7Понтовость: ${STATE.pont}/${PONT_MAX}    [0] свалить`, 0x7);
+  println(`  ^7Понтовость: ${STATE.pont}/${pontMax()}    [0] свалить`, 0x7);
 }
 
 function handleDen(raw) {
@@ -1197,30 +1204,30 @@ function handleDen(raw) {
         // Diminishing street-cred: a round of beer buys less the more понта ты
         // уже наел, so maxing out is a real grind, not 2-3 rounds (was a flat
         // +5/+7). Гопник keeps the Притон bonus (+1).
-        const headroom = PONT_MAX - STATE.pont;
+        const headroom = pontMax() - STATE.pont;
         let gain = Math.max(1, Math.ceil(headroom / 4));  // 12→3, 9→3, 6→2, 4→1…
         if (STATE.klass === 'gopnik') gain += 1;
         const before = STATE.pont;
-        STATE.pont = Math.min(PONT_MAX, STATE.pont + gain);
+        STATE.pont = Math.min(pontMax(), STATE.pont + gain);
         const realGain = STATE.pont - before;
         if (realGain > 0) {
           println(`^2Ты угостил пацанов пивом. Понтовость улутшилась на ${realGain}.`, 0xA);
         } else {
           println('^6Ты и так в полном понте — некуда расти.', 0x6);
         }
-        println(`^7Понтовость: ${STATE.pont}/${PONT_MAX}   Деньги: ${STATE.money}р`, 0x7);
+        println(`^7Понтовость: ${STATE.pont}/${pontMax()}   Деньги: ${STATE.money}р`, 0x7);
       } else {
         println('^6А нет у тебя пива.', 0x6);
       }
       break;
     }
     case 'r': {  // занять денег на пиво
-      if (STATE.pont >= PONT_GATE_BORROW) {
+      if (STATE.pont >= pontGateBorrow()) {
         const got = 2 + roll(3);
         STATE.money += got;
         STATE.pont -= 2;
         println(`^2Ты занял ${got} рубля на пиво. Понтовость уменьшилась на 2.`, 0xA);
-        println(`^7Понтовость: ${STATE.pont}/${PONT_MAX}   Деньги: ${STATE.money}р`, 0x7);
+        println(`^7Понтовость: ${STATE.pont}/${pontMax()}   Деньги: ${STATE.money}р`, 0x7);
       } else {
         println('^6Ты уже всю мелочь выгреб!', 0x6);
       }
@@ -1265,9 +1272,9 @@ function handleDen(raw) {
       break;
     }
     case 's':  // спросить про понтовость
-      println(`^4Твоя понтовость сейчас = ${STATE.pont}/${PONT_MAX}.`, 0xC);
-      // Подмога (`v`) включается только с PONT_GATE_BACKUP (см. кейс 'v').
-      if (STATE.pont >= PONT_GATE_BACKUP) {
+      println(`^4Твоя понтовость сейчас = ${STATE.pont}/${pontMax()}.`, 0xC);
+      // Подмога (`v`) включается только с pontGateBackup() (см. кейс 'v').
+      if (STATE.pont >= pontGateBackup()) {
         println('^7Да если чё мы за тебя впрягёмся.', 0x7);
       } else {
         println('^6Да кто за такого мутного впрягаться будет? Поднимай понт.', 0x6);
@@ -1410,7 +1417,7 @@ function fleeCombat() {
 // Divine/magic boost — it bypasses the gym's per-район cap (paid/rare, so fine).
 function castBlessing(pontGain) {
   const before = STATE.pont;
-  STATE.pont = Math.min(PONT_MAX, STATE.pont + pontGain);
+  STATE.pont = Math.min(pontMax(), STATE.pont + pontGain);
   const realGain = STATE.pont - before;
   println(`^1Да увеличится твоя понтовость! Был ты ${before} а стал ${STATE.pont}.`, 0xF);
   // Verbatim FUN_1000_2526 понт line (@ 0x3d60).
@@ -1672,8 +1679,8 @@ function runCommand(cmd) {
       // Ramp softened from 40%+15%/kill(cap90) to 35%+8%/kill(cap70): reliably
       // findable for progression, but no longer near-guaranteed every wander.
       if (bossCooldown > 0) bossCooldown -= 1;
-      const bossPct = Math.min(70, 35 + 8 * (STATE.district_kills - 5));
-      if (!STATE.rector_done && STATE.district_kills >= 5 && bossCooldown === 0
+      const bossPct = Math.min(70, 35 + 8 * (STATE.district_kills - bossKillGate()));
+      if (!STATE.rector_done && STATE.district_kills >= bossKillGate() && bossCooldown === 0
           && roll(100) < bossPct) {
         if (STATE.hp < STATE.max_hp * 0.5) {
           println('^6Ты приметил главного отморозка района — но лезть к нему в таком состоянии гиблое дело.', 0x6);
@@ -1706,7 +1713,7 @@ function runCommand(cmd) {
       if (roll(10) < spawnChance) {
         ENCOUNTER = spawnEnemy(normalEnemyLevel, dist.enemyBonus);
         println(`^4Ты встретил: ${ENCOUNTER.name} (уровень ${ENCOUNTER.level}).`, 0xC);
-        const left = Math.max(0, 5 - STATE.district_kills);
+        const left = Math.max(0, bossKillGate() - STATE.district_kills);
         if (left > 0) println(`^6До главного отморозка ${dist.name}: отпинай ещё ${left}.`, 0x6);
         println('^7Напиши ^6sv^7 приглядеться, ^6k^7 гасить, ^6run^7 свалить (западло).', 0x7);
       } else {
@@ -1761,7 +1768,7 @@ function runCommand(cmd) {
     case 'v':
       if (!ENCOUNTER) { println('^7Подкрепление не нужно — тут никого нет.', 0x7); break; }
       // Backup is gated by понтовость (EXE @ 0x35E0): no cred → nobody shows up.
-      if (STATE.pont < PONT_GATE_BACKUP) {
+      if (STATE.pont < pontGateBackup()) {
         println('^4Ни кто не хочет за тебя впрягаться.', 0xC);
         println('^6Сначала надо скорешиться с местной гопотой (притон, ^6pr^6).', 0x6);
         break;
@@ -1770,7 +1777,7 @@ function runCommand(cmd) {
       STATE.pont = Math.max(0, STATE.pont - 1);  // calling in a favour spends cred
       // Краденый мобильник — подмога приходит быстрее/надёжнее (EXE @ 0xaac7).
       if (STATE.has_phone) println('^DТы свистнул пацанам по мобиле — летят быстрее.', 0xD);
-      if (roll(PONT_MAX) < Math.min(PONT_MAX, backupPont + 1 + (STATE.has_phone ? 4 : 0))) {
+      if (roll(pontMax()) < Math.min(pontMax(), backupPont + 1 + (STATE.has_phone ? 4 : 0))) {
         println('^2Подошли пацаны - Ща начнется!', 0xA);
         const dmg = 4 + STATE.district * 3 + roll(3 + backupPont) + (STATE.has_phone ? 3 : 0);
         ENCOUNTER.hp -= dmg;
@@ -1896,7 +1903,7 @@ function runCommand(cmd) {
     case 'kl':
       if (blockedLocation('kl')) break;
       // Club is gated by понтовость (EXE @ 0xA130): a nobody won't get in.
-      if (STATE.pont < PONT_GATE_CLUB) {
+      if (STATE.pont < pontGateClub()) {
         println('^4Тебя мудака такого туда не пустят — поднимай понтовость.', 0xC);
         println('^6Тебе не стоит пока туда соваться. Зайди в притон (^6pr^6).', 0x6);
         break;
@@ -1925,7 +1932,7 @@ function runCommand(cmd) {
         if (STATE.broken_leg) bones.push('сломана нога (нет серии ударов, не убежать)');
         println(`^4Переломы: ${bones.join(', ')} — лечись в больнице (rep ▸ r).`, 0xC);
       }
-      println(`^6Деньги: ${STATE.money}р  Реп: ${STATE.rep}  Опыт: ${STATE.exp}  Понт: ${STATE.pont}/${PONT_MAX}`, 0x6);
+      println(`^6Деньги: ${STATE.money}р  Реп: ${STATE.rep}  Опыт: ${STATE.exp}  Понт: ${STATE.pont}/${pontMax()}`, 0x6);
       println(`^6Оружие: ${STATE.weapon_name}${STATE.weapon_dmg>0?` (урон+${STATE.weapon_dmg})`:''}${STATE.jaw_guard?' + зубная защита':''}`, 0x6);
       if (STATE.jacket) println(`^6Прикид: ${STATE.jacket.name} (защита+${STATE.jacket.armor})`, 0x6);
       if (STATE.ring) println(`^6Фенька: ${STATE.ring.name} (+3 HP на ходу, 5% самозарост переломов)`, 0x6);
