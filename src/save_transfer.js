@@ -32,20 +32,65 @@ export function importSave(text) {
   return obj.state;
 }
 
-// Trigger a browser download of the serialized save (Blob + temporary anchor).
-export function downloadSave(state, nick) {
-  const text = exportSave(state);
-  const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  const safe = (nick || 'gopnik').replace(/[\/\\?%*:|"<>\s]+/g, '_').slice(0, 20) || 'gopnik';
-  const blob = new Blob([text], { type: 'application/json' });
+// Slugify a nick into a filesystem-safe filename fragment.
+function safeNick(nick) {
+  return (nick || 'gopnik').replace(/[\/\\?%*:|"<>\s]+/g, '_').slice(0, 20) || 'gopnik';
+}
+
+// Trigger a browser download of arbitrary text (Blob + temporary anchor).
+function downloadText(filename, text, mime = 'application/json') {
+  const blob = new Blob([text], { type: mime });
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   a.href = url;
-  a.download = `gopnik-save-${safe}-${date}.json`;
+  a.download = filename;
   document.body.appendChild(a);
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// Trigger a browser download of the serialized save.
+export function downloadSave(state, nick) {
+  const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+  downloadText(`gopnik-save-${safeNick(nick)}-${date}.json`, exportSave(state));
+}
+
+// ── Debug log export ──────────────────────────────────────────────────────────
+// Strip `^N` color escapes so the downloaded log is plain, readable text. Mirrors
+// the isColorEsc rule used by render.js / play.js (hex digit or the ASCII-offset
+// punctuation range the original decoder accepted).
+function isColorEsc(c) {
+  if ('0123456789ABCDEFabcdef'.indexOf(c) >= 0) return true;
+  const cc = c.charCodeAt(0);
+  return (cc >= 0x21 && cc <= 0x2F) || (cc >= 0x3A && cc <= 0x3F);
+}
+function stripEscapes(text) {
+  let out = '';
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === '^' && i + 1 < text.length && isColorEsc(text[i + 1])) { i++; continue; }
+    out += text[i];
+  }
+  return out;
+}
+
+// Download a human-readable debug log: a STATE snapshot + the wrapped REPL log
+// lines (color escapes stripped). Intended for bug reports — the "баг" button.
+export function downloadLog(logLines, state, nick) {
+  const out = [];
+  out.push('GOPNIK.EXE — веб-порт — debug log');
+  out.push(`time: ${new Date().toISOString()}`);
+  if (typeof navigator !== 'undefined') out.push(`UA:   ${navigator.userAgent}`);
+  out.push('');
+  out.push('--- STATE ---');
+  out.push(JSON.stringify(state, null, 2));
+  out.push('');
+  out.push('--- LOG ---');
+  for (const entry of (logLines || [])) {
+    out.push(stripEscapes(typeof entry === 'string' ? entry : (entry && entry.text) || ''));
+  }
+  const date = new Date().toISOString().slice(0, 19).replace(/[:T]/g, '').replace(/-/g, '');
+  downloadText(`gopnik-log-${safeNick(nick)}-${date}.txt`, out.join('\n'), 'text/plain');
 }
 
 // Open a file picker and resolve with the chosen file's text. Rejects if the

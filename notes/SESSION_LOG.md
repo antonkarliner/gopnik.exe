@@ -1,3 +1,57 @@
+# Session 36 — «баг» button: download game log for bug reports (`?v=53`)
+
+Added a debug-log download so players can attach the in-game log to bug
+reports.
+
+- **`src/save_transfer.js`** — new `downloadLog(logLines, state, nick)` that
+  builds a plain-text file: a header (ISO timestamp + `navigator.userAgent`),
+  a pretty-printed `STATE` JSON dump, then the REPL log lines with `^N` color
+  escapes stripped (`isColorEsc`/`stripEscapes`, mirroring render.js/play.js).
+  Refactored the Blob+anchor download into a shared `downloadText()` helper
+  (now reused by `downloadSave`) + a `safeNick()` filename slug. File name:
+  `gopnik-log-<nick>-<YYYYMMDDhhmmss>.txt`, MIME `text/plain`.
+- **`src/states/play.js`** — new `bug` REPL command (in the HELP table and the
+  command switch) → `downloadLog(log, STATE, STATE.nick)`.
+- **`index.html`** — added a `🐞 баг` button to `#savebar` (`data-cmd="bug"`).
+  The existing main.js savebar handler types the `data-cmd` into the input
+  queue (play-state only), so it dispatches the same `bug` command.
+
+Verified in preview: drove boot→title→intro→difficulty→play, ran `bug` via the
+REPL, captured the Blob — correct filename/MIME, header+STATE+stripped log
+content; success line «Лог игры скачан (.txt)» prints.
+
+Cache-bust bumped `?v=52` → `?v=53` across all modules + index.html.
+
+---
+
+# Session 35 — UX fixes: log word-wrap, понтовость copy, Косяк label (`?v=52`)
+
+Three player-reported polish issues (all in `src/states/play.js`):
+
+1. **Long log lines overflowed / were truncated.** The REPL log only did a
+   draw-time `text.slice(0, COLS-4)` — a raw *string-length* slice that
+   mis-cut any line containing `^N` color escapes, and combat crit lines
+   (e.g. «Двойной урон!!! Точно в висок! Ты пнул бывалый гопник на 6з. У
+   него осталось N») ran past the bezel. Added `wrapColored(text, width)` +
+   `isColorEsc()` helpers; `println()` now word-wraps to `WRAP_WIDTH = COLS-4`
+   *visible* columns (escapes count as zero width), breaking on spaces and
+   carrying the active color onto each continuation line (each wrapped line
+   is its own `writeAt()` call, which would otherwise reset fg to the
+   `println` color arg). Removed the now-redundant draw-time slice.
+   Verified: 300+ combat rounds, max rendered width ≤79; unit-tested the
+   wrap fn — continuation lines start with the carried `^2`, all ≤76 vis.
+2. **«Да если чё мы за тебя впрягаемся» at понт 0 was contradictory** —
+   backup (`v`) is gated at `pont >= 3`, so the притон `s` line now branches:
+   ≥3 → «…впрягёмся», <3 → «Да кто за такого мутного впрягаться будет?
+   Поднимай понт.»
+3. **Косяк shop label was cryptic English «High +3»** → «кайф +3 (расслабон)»
+   (and Офигенный косяк → «кайф +3, очко прокачки …»). `high` is a cosmetic
+   buzz state in the port (no combat effect), so the label is honest flavor.
+
+Cache-bust bumped `?v=51` → `?v=52` across all modules + index.html.
+
+---
+
 # Session 34 — RE-grounded gameplay fixes: bones, mage, maniac, vet, reset, flee, boss-gate (`?v=51`)
 
 Player-reported issues from a live playthrough, each **grounded against the

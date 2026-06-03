@@ -2,7 +2,7 @@
 // The original is text-command driven (you type 'w', 'mar', 'bmar' etc.
 // at a prompt); this screen shows the recovered help text verbatim.
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=51';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=54';
 
 const CMDS = [
   // [cmd, description (Russian, CP866-decoded from EXE)]

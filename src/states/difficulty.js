@@ -5,8 +5,8 @@
 // asks "А зовут тебя:" with the default name "Раздолбай" (EXE @ 0x6802), then
 // drops you at the university doors.
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=51';
-import { CLASS_LIST, armNewGame, getNick, getKlassId } from './play.js?v=51';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=54';
+import { CLASS_LIST, armNewGame, getNick, getKlassId } from './play.js?v=54';
 
 let phase   = 'pick';  // 'pick' | 'name'
 let sel     = 0;
