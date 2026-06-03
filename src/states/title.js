@@ -3,7 +3,7 @@
 // with a windmill arrow that rotates through colors 0..7, then the
 // Russian "Press any key" prompt and the V.P.U. credit line.
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=54';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=55';
 
 // Each entry: [colorIndex, art-text] -- one row of the logo.
 // Color index is the `^N` value preceding the row in the EXE.

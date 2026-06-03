@@ -22,7 +22,7 @@
 //   @ 0x157F2: rank "Пацан, который завалил Проректора СУНЦа"
 //   @ 0x158F3: rank "Пацан, который всех опрокинул"
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=54';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=55';
 
 // Ranks awarded by the end-game transitions (not the rep ladder).
 export const VICTORY_RANK = 'Пацан, который завалил Проректора СУНЦа';

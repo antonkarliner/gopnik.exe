@@ -15,7 +15,7 @@
 //     характер" → stat explanation → per-location пояснения). Transcribed
 //     verbatim below (wrapped to 80 cols; original misspellings kept).
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=54';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=55';
 
 const PAGES = [
   {

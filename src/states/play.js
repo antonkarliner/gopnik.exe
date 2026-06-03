@@ -4,10 +4,10 @@
 // Market/dealer: EXE @ 0xA4AD / 0xAA25 / 0xAB89 / 0xBCD6
 // Rector: EXE @ 0x464A / 0x5128 / 0x505A
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=54';
-import { armVictory, VICTORY_RANK, FINAL_RANK } from './victory.js?v=54';
-import { rankForRep } from './ranks.js?v=54';
-import { downloadSave, pickSaveFile, importSave, downloadLog } from '../save_transfer.js?v=54';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=55';
+import { armVictory, VICTORY_RANK, FINAL_RANK } from './victory.js?v=55';
+import { rankForRep } from './ranks.js?v=55';
+import { downloadSave, pickSaveFile, importSave, downloadLog } from '../save_transfer.js?v=55';
 
 // ── Help table ────────────────────────────────────────────────────────────────
 const HELP = [
@@ -727,6 +727,14 @@ function println(text, color = 0x7) {
 const DISTRICT_PRICE_MUL = [1, 1.15, 1.3];
 function districtMul()  { return DISTRICT_PRICE_MUL[STATE.district] || 1; }
 function scaledPrice(p) { return Math.max(1, Math.round(p * districtMul())); }
+// Russian plural for «рубль»: 1→рубль, 2-4→рубля, 0/5-20→рублей (mod-10/mod-100 rule).
+function rubli(n) {
+  const m100 = Math.abs(n) % 100, m10 = m100 % 10;
+  if (m100 >= 11 && m100 <= 14) return 'рублей';
+  if (m10 === 1) return 'рубль';
+  if (m10 >= 2 && m10 <= 4) return 'рубля';
+  return 'рублей';
+}
 function repairCost(missingHp) {
   return Math.min(scaledPrice(30), scaledPrice(5 + Math.ceil(missingHp / 6)));
 }
@@ -1481,7 +1489,7 @@ function fractureCost() { return scaledPrice(7); }   // EXE «7 рублей п�
 function vetMenu() {
   const hpCost = STATE.hp < STATE.max_hp ? repairCost(STATE.max_hp - STATE.hp) : 0;
   const hasBreaks = STATE.broken_jaw || STATE.broken_leg;
-  if (STATE.hp < STATE.max_hp) println(`^7  ^2h^7 - за ^6${hpCost}^7 рубля тебя залатают (HP ${STATE.hp}/${STATE.max_hp})`, 0x7);
+  if (STATE.hp < STATE.max_hp) println(`^7  ^2h^7 - за ^6${hpCost}^7 ${rubli(hpCost)} тебя залатают (HP ${STATE.hp}/${STATE.max_hp})`, 0x7);
   if (hasBreaks) {
     const which = [STATE.broken_jaw && 'челюсть', STATE.broken_leg && 'нога'].filter(Boolean).join(' + ');
     println(`^7  ^2r^7 - за ^6${fractureCost()}^7 рублей починят переломы (${which})`, 0x7);
