@@ -3,7 +3,8 @@
 // with a windmill arrow that rotates through colors 0..7, then the
 // Russian "Press any key" prompt and the V.P.U. credit line.
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=55';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=57';
+import { hasResumableGame, getNick } from './play.js?v=57';
 
 // Each entry: [colorIndex, art-text] -- one row of the logo.
 // Color index is the `^N` value preceding the row in the EXE.
@@ -19,15 +20,19 @@ const ROWS_ART = [
 ];
 
 let tick = 0;
+let resumable = false;   // is there an autosave to continue from?
 
 export const title = {
-  enter() { tick = 0; },
+  enter() { tick = 0; resumable = hasResumableGame(); },
 
   update(input) {
     tick++;
     while (input.hasKey()) {
       const k = input.pollKey();
-      if (k.key !== 'F' && k.key !== 'f') return 'menu';
+      if (k.key === 'F' || k.key === 'f') continue;  // fullscreen toggle, ignore here
+      // With a game in progress, default to continuing it; only "N" starts over.
+      if (resumable) return (k.key === 'n' || k.key === 'N') ? 'menu' : 'play';
+      return 'menu';   // no save → straight into the new-game intro
     }
     return null;
   },
@@ -45,12 +50,18 @@ export const title = {
 
     // Credits, from offsets after the logo art in the same fragment.
     const cy = y0 + ROWS_ART.length + 2;
-    writeAt(buf, x0, cy,     'Версия 1.025', 0x7, 0);
-    writeAt(buf, x0, cy + 1, 'Нажми какую-нибудь кнопку', 0xE, 0);
+    writeAt(buf, x0, cy, 'Версия 1.025', 0x7, 0);
+    if (resumable) {
+      writeAt(buf, x0, cy + 1, `Enter — продолжить за «${getNick()}»`, 0xA, 0);
+      writeAt(buf, x0, cy + 2, 'N — начать новую игру', 0xE, 0);
+    } else {
+      writeAt(buf, x0, cy + 1, 'Нажми какую-нибудь кнопку', 0xE, 0);
+    }
     writeAt(buf, x0, cy + 3, '2003 year, June, Sept', 0x7, 0);
     writeAt(buf, x0, cy + 4, 'by V.P.U.', 0xA, 0);
 
     writeAt(buf, 2, ROWS - 2, 'reverse-engineered web port', 0x8, 0);
-    writeAt(buf, COLS - 18, ROWS - 2, 'press any key ', 0xF, 0);
+    writeAt(buf, COLS - 18, ROWS - 2,
+      resumable ? 'Enter: продолжить' : 'press any key ', 0xF, 0);
   },
 };

@@ -5,15 +5,15 @@
 
 // Version-tag the imports so browsers re-fetch when we edit modules.
 // Bump the version suffix any time you edit a module file.
-import { Renderer, makeBuffer, COLS, ROWS, writeAt, clearBuffer } from './render.js?v=55';
-import { InputQueue, attachInput } from './input.js?v=55';
-import { Rand } from './rng.js?v=55';
-import { title } from './states/title.js?v=55';
-import { menu  } from './states/menu.js?v=55';
-import { intro } from './states/intro.js?v=55';
-import { difficulty } from './states/difficulty.js?v=55';
-import { play } from './states/play.js?v=55';
-import { victory } from './states/victory.js?v=55';
+import { Renderer, makeBuffer, COLS, ROWS, writeAt, clearBuffer } from './render.js?v=57';
+import { InputQueue, attachInput } from './input.js?v=57';
+import { Rand } from './rng.js?v=57';
+import { title } from './states/title.js?v=57';
+import { menu  } from './states/menu.js?v=57';
+import { intro } from './states/intro.js?v=57';
+import { difficulty } from './states/difficulty.js?v=57';
+import { play } from './states/play.js?v=57';
+import { victory } from './states/victory.js?v=57';
 
 const canvas   = document.getElementById('screen');
 const touchpad = document.getElementById('touchpad');

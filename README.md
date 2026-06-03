@@ -39,6 +39,10 @@ Examples:
   round of beer in the притон uses diminishing returns, and the club/backup
   thresholds were raised, so cred is earned rather than maxed in a couple of
   clicks.
+- **District-boss encounters** have fairness guards: the boss will not ambush
+  you while you are badly hurt (below half HP), there is a short breather after
+  it defeats you instead of an instant re-fight, and its recurring spawn chance
+  ramps more gently — so progression stays reliable without a death spiral.
 - Various shop prices, per-district scaling, and encounter values are port
   approximations rather than exact recoveries.
 - Saves use `localStorage` plus a JSON export/import instead of the original

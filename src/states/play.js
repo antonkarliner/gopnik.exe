@@ -4,10 +4,10 @@
 // Market/dealer: EXE @ 0xA4AD / 0xAA25 / 0xAB89 / 0xBCD6
 // Rector: EXE @ 0x464A / 0x5128 / 0x505A
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=55';
-import { armVictory, VICTORY_RANK, FINAL_RANK } from './victory.js?v=55';
-import { rankForRep } from './ranks.js?v=55';
-import { downloadSave, pickSaveFile, importSave, downloadLog } from '../save_transfer.js?v=55';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=57';
+import { armVictory, VICTORY_RANK, FINAL_RANK } from './victory.js?v=57';
+import { rankForRep } from './ranks.js?v=57';
+import { downloadSave, pickSaveFile, importSave, downloadLog } from '../save_transfer.js?v=57';
 
 // ── Help table ────────────────────────────────────────────────────────────────
 const HELP = [
@@ -220,6 +220,21 @@ const STATE = loadState();
 // ── New-game hooks for the class-selection screen (difficulty.js) ─────────────
 export function getNick()    { return STATE.nick; }
 export function getKlassId() { return curClass().id; }
+// True when localStorage holds a game already in progress (past the
+// university-door intro), so the title screen can offer "продолжить" instead
+// of forcing a brand-new character through class selection (which wipes the
+// autosave via armNewGame). `first_game` flips to false the first time
+// play.enter() runs after class creation.
+export function hasResumableGame() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+             || localStorage.getItem('gopnik.state.v2')
+             || localStorage.getItem('gopnik.state.v1');
+    if (!raw) return false;
+    const s = JSON.parse(raw);
+    return !!(s && typeof s === 'object' && s.first_game === false);
+  } catch { return false; }
+}
 // Seed the four combat stats from a class preset and rebuild HP. Faithful to
 // the EXE class-init (FUN_1000_6a0d @ 1542): set stats by class, then
 // max_hp = vitality*5 + 10 + str, hp = max_hp.
@@ -256,7 +271,9 @@ const DISTRICTS = [
     gunZone: false,   // спальный район — менты патрулируют, стрелять нельзя (EXE @ 0x3754)
     victoryKind: 'fake',
     boss: () => ({
-      name: 'Ректор', hp: 50, max_hp: 50, str: 12, dex: 7, luck: 4, armor: 0, level: 5,
+      // The twist/fake first boss — meant to be the most approachable of the three.
+      // dex 6 → 75% hit (was 7/80%) so the opening showdown isn't a near-auto-hit.
+      name: 'Ректор', hp: 50, max_hp: 50, str: 12, dex: 6, luck: 4, armor: 0, level: 5,
       loot: null, isBoss: true,
       intro: ['Тут заходит настоящий ректор.',
               'Мудак! ты тупой дебил, думал что я идиот?',
@@ -455,6 +472,11 @@ let mentHeat = 0;
 // почти каждую минуту (см. wander-логику). Сессионный, не персистится.
 let blessCooldown = 0;
 
+// Пауза перед тем, как район-босс снова полезет после того, как он тебя завалил.
+// Без неё босс с шансом ~85%/шатание re-ambush'ил игрока сразу же на 20% HP —
+// death-spiral без шанса подготовиться (фидбек игрока). Сессионный, не персистится.
+let bossCooldown = 0;
+
 // ── Crowd lines (EXE @ 0x4823) ─────────────────────────────────────────────────
 const CROWD = [
   '^6Зрители: Чё-тут за батва?',
@@ -645,6 +667,7 @@ function resetTransientState({ clearArrival = true } = {}) {
   mentHeat = 0;
   crowdTimer = 0;
   blessCooldown = 0;
+  bossCooldown = 0;
   denThefts = 0;
   scrollLogToBottom();
 }
@@ -953,6 +976,7 @@ function playerDead() {
     // EXE @ 0x505A
     println('^4Ты сдох. Ректор тебя замочил. Ты так и не доказал свою крутизну.', 0xC);
     println('^1Тебе повезло знакомые пацаны отвезли тебя в больницу.', 0xA);
+    bossCooldown = 4;  // breather — не давать боссу re-ambush'ить сразу же
   } else if (e?.isMent) {
     println('^4Менты тебя приняли. Ночь в обезьяннике, потом отпустили.', 0xC);
     mentHeat = 0;  // отсиделся — шухер улёгся
@@ -1635,13 +1659,28 @@ function runCommand(cmd) {
         break;
       }
 
-      // District boss is a *recurring chance* once you've cleared 5 locals here —
-      // never a hard lock. In the EXE (FUN_1000_3d11) the район boss becomes an
-      // ongoing opportunity past a kill threshold, not a forced wander; so the
-      // chance just ramps with each extra clear and progression can't stall:
-      // 40% at 5 kills, +15%/kill, capped at 90% (always escapable per-wander).
-      const bossPct = Math.min(90, 40 + 15 * (STATE.district_kills - 5));
-      if (!STATE.rector_done && STATE.district_kills >= 5 && roll(100) < bossPct) {
+      // District boss — a *recurring opportunity* once you've cleared 5 locals
+      // here, never a hard lock (EXE FUN_1000_3d11: the район boss becomes an
+      // ongoing chance past a kill threshold, not a forced wander). Two fairness
+      // guards on top (player feedback — got re-ambushed at 20% HP with no way to
+      // flee a boss):
+      //   • bossCooldown — a few-wander breather after the boss downs you, so you
+      //     can heal/regroup instead of being re-jumped the very next `w`.
+      //   • HP gate — the boss won't jump you while you're badly hurt; it "waits"
+      //     and you're told to patch up first. You still can't flee mid-fight, so
+      //     engaging it must be on your terms.
+      // Ramp softened from 40%+15%/kill(cap90) to 35%+8%/kill(cap70): reliably
+      // findable for progression, but no longer near-guaranteed every wander.
+      if (bossCooldown > 0) bossCooldown -= 1;
+      const bossPct = Math.min(70, 35 + 8 * (STATE.district_kills - 5));
+      if (!STATE.rector_done && STATE.district_kills >= 5 && bossCooldown === 0
+          && roll(100) < bossPct) {
+        if (STATE.hp < STATE.max_hp * 0.5) {
+          println('^6Ты приметил главного отморозка района — но лезть к нему в таком состоянии гиблое дело.', 0x6);
+          println('^7Подлечись (^6rep^7 / больница, пиво ^6h^7) и возвращайся — никуда он не денется.', 0x7);
+          persistState(STATE);
+          break;
+        }
         ENCOUNTER = dist.boss();
         // EXE @ 0x464A — boss intro lines are district-specific.
         for (const line of ENCOUNTER.intro) println(`^4${line}`, 0xC);

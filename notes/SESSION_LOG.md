@@ -1,3 +1,71 @@
+# Session 39 — District-boss fairness: HP gate + post-loss cooldown + softer ramp (`?v=57`)
+
+Player feedback (log: Вор, str13/dex3/vit2/luck7, 33 HP, district_kills 8):
+got the Ельцовка boss «Ректор» twice in a row right after a loss. Root causes
+in the `w` handler (`src/states/play.js`):
+- Boss spawn chance was `min(90, 40 + 15×(kills−5))` = **85%/wander** at 8 kills.
+- `playerDead` drops you to 20% HP, and you **can't flee a boss** (fleeCombat
+  early-returns for `isBoss`), so the next `w` re-ambushed at ~6 HP → death spiral.
+- No HP check on spawn: the boss jumped you regardless of how hurt you were.
+
+Fixes (all in the `case 'w'` boss block + `playerDead`):
+- **HP gate** — boss won't spawn while `hp < max_hp/2`; instead narrates spotting
+  it and tells you to heal («…лезть к нему в таком состоянии гиблое дело»). You
+  still can't flee mid-fight, so engagement stays on your terms.
+- **`bossCooldown`** (new session var, reset in `resetTransientState`) — set to 4
+  in `playerDead` when a boss downs you; decremented once per wander before the
+  boss check, which is gated on `bossCooldown === 0`. Gives a 3-wander breather.
+- **Softer ramp** — `min(70, 35 + 8×(kills−5))` (was `min(90, 40+15×…)`). Still
+  reliably findable (70% by ~10 kills) but no longer near-guaranteed every wander.
+- **First-boss nudge** — Ельцовка «Ректор» (the twist/fake boss) `dex 7 → 6`
+  (80% → 75% hit), since it's meant to be the most approachable of the three.
+
+Note: the fight itself has counterplay the player skipped — a «Реальная кожанка»
+(armor 2) was in stock and flips the damage race to a win; armor + full HP +
+healing are the intended tools. So this is a *fairness* fix (no unfair ambush /
+death-spiral), not a power nerf.
+
+Verified in preview (seeded states + scripted RNG): low HP → no spawn (gate
+fires); full HP → spawns; after a boss death → suppressed for 3 wanders, returns
+on the 4th; `sv` shows 75%; no console errors.
+
+Cache-bust bumped `?v=56` → `?v=57` across all modules + index.html.
+
+---
+
+# Session 38 — Resume from autosave on the title screen (`?v=56`)
+
+Bug (player report + two logs): pressing Esc / reloading / re-opening the page
+never resumed the autosave — only the nick survived. Root cause: the boot flow
+is always `boot → title → intro → difficulty → play`, and `difficulty`'s
+name-entry calls `armNewGame()`, which `Object.assign(STATE, {...DEFAULT_STATE})`
+— wiping the constantly-written localStorage autosave. There was no "continue"
+path at all; the nick survived only because `difficulty.enter()` reads
+`getNick()` for display before the wipe.
+
+Fix — add a continue path on the title screen:
+- **`src/states/play.js`** — new `export hasResumableGame()`: reads the
+  localStorage save (v3→v2→v1 fallback, same as `loadState`) and returns true
+  iff it parses and has `first_game === false` (i.e. past the university-door
+  intro). No new state; the live `STATE` is already correct on resume (fresh
+  `loadState()` on page reload; live in-memory state on Esc→title→continue).
+- **`src/states/title.js`** — `enter()` now computes `resumable =
+  hasResumableGame()`. With a save in progress, **Enter / any key → `play`**
+  (resume), **N → `menu`** (→ intro → difficulty = brand-new game). No save →
+  any key → `menu` as before. Prompt text switches to
+  «Enter — продолжить за «<nick>» / N — начать новую игру». `F`/`f` still
+  ignored (fullscreen). Returning `'play'` passes through main.js's
+  `'menu'→'intro'` remap untouched.
+
+Verified in preview (buffer dumps + screenshot): resumable title renders the
+continue prompt; `title.update` returns `'play'` on Enter and `'intro'` on N;
+resumed `play` shows the seeded save intact (ОбьГЭС/district 1, HP 7/23, 99р,
+Реп 5); no-save title shows «Нажми какую-нибудь кнопку» and any key → `intro`.
+
+Cache-bust bumped `?v=55` → `?v=56` across all modules + index.html.
+
+---
+
 # Session 37 — Понтовость balance: diminishing beer + raised gates (`?v=54`)
 
 Player feedback: понт grew too fast (2-3 beers maxed it; one beer unlocked
