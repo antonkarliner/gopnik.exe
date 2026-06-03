@@ -1,3 +1,29 @@
+# Session 37 — Понтовость balance: diminishing beer + raised gates (`?v=54`)
+
+Player feedback: понт grew too fast (2-3 beers maxed it; one beer unlocked
+everything gated). Both port values, no RE grounding, so free to tune. All in
+`src/states/play.js`.
+
+- **Diminishing beer (`p` in притон).** Was a flat +5/+7. Now
+  `gain = max(1, ceil((PONT_MAX - pont)/4))` (+1 for Гопник's Притон bonus), so
+  each round buys less the higher your понт. Maxing: **35р / 7 rounds** for a
+  normal char (was 15р / 3), **20р / 4** for Гопник. Reports the clamped
+  realGain; «полном понте — некуда расти» at the cap.
+- **Raised gate thresholds** (named constants by `PONT_MAX`): club `kl` 2→
+  `PONT_GATE_CLUB=4`, backup `v` 3→`PONT_GATE_BACKUP=6`, borrow `r` 2→
+  `PONT_GATE_BORROW=3`. The притон `s` "впрягёмся" line now tracks
+  `PONT_GATE_BACKUP`. Key effect: the first beer (0→3) no longer unlocks club
+  *and* backup — backup now needs **2 beers** (понт 6), club 2 (1 for Гопник).
+  EXE confirms a club/backup понт gate existed but not the values.
+
+Verified: module loads clean; simulated the exact beer arithmetic + gate checks
+— normal char unlocks club/backup after 2 beers, borrow after 1; Гопник club
+after 1, backup after 2.
+
+Cache-bust bumped `?v=53` → `?v=54` across all modules + index.html.
+
+---
+
 # Session 36 — «баг» button: download game log for bug reports (`?v=53`)
 
 Added a debug-log download so players can attach the in-game log to bug

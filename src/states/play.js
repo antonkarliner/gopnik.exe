@@ -4,10 +4,10 @@
 // Market/dealer: EXE @ 0xA4AD / 0xAA25 / 0xAB89 / 0xBCD6
 // Rector: EXE @ 0x464A / 0x5128 / 0x505A
 
-import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=51';
-import { armVictory, VICTORY_RANK, FINAL_RANK } from './victory.js?v=51';
-import { rankForRep } from './ranks.js?v=51';
-import { downloadSave, pickSaveFile, importSave } from '../save_transfer.js?v=51';
+import { clearBuffer, writeAt, COLS, ROWS } from '../render.js?v=54';
+import { armVictory, VICTORY_RANK, FINAL_RANK } from './victory.js?v=54';
+import { rankForRep } from './ranks.js?v=54';
+import { downloadSave, pickSaveFile, importSave, downloadLog } from '../save_transfer.js?v=54';
 
 // ── Help table ────────────────────────────────────────────────────────────────
 const HELP = [
@@ -35,6 +35,7 @@ const HELP = [
   ['load', 'загрузить из браузера'],
   ['export','скачать сейв файлом (.json)'],
   ['import','загрузить сейв из файла (.json)'],
+  ['bug',  'скачать лог игры для багрепорта (.txt)'],
   ['cp',   'откатиться к точке Рушеля Блаво'],
   ['reset','сбросить все статы'],
   ['e',    'выйти в меню'],
@@ -65,6 +66,13 @@ function curClass() { return CLASS_BY_KEY[STATE.klass] || CLASS_LIST[0]; }
 
 // Понтовость (street-cred) caps at 12 (EXE @ 0x595B: "# из 12 шансов").
 const PONT_MAX = 12;
+// Понт thresholds that gate locations/actions. The EXE confirms a club/backup
+// понт gate existed but not the exact values, so these are tuned for feel: high
+// enough that one round of beer (the притон's diminishing +3/+4) no longer
+// unlocks everything — backup/club take a real cred grind to reach.
+const PONT_GATE_CLUB   = 4;  // kl — войти в клуб
+const PONT_GATE_BACKUP = 6;  // v  — позвать подкрепление
+const PONT_GATE_BORROW = 3;  // r  — занять денег на пиво в притоне
 
 // ── Player state ──────────────────────────────────────────────────────────────
 // Здоровье = 10 + Живучесть*5 + Сила  (EXE @ 0x72F9 / FUN_1000_6a0d @ 1542)
@@ -505,10 +513,10 @@ const DISTRICT_STREET = [
 const MARKET_ITEMS = [
   { name: 'Хотдог',              price: 8,  desc: 'HP +4',   buy: s => { s.hp = Math.min(s.hp+4, s.max_hp); } },
   { name: 'Пиво',                price: 5,  desc: 'HP +3',   buy: s => { s.hp = Math.min(s.hp+3, s.max_hp); s.drunk = Math.min(s.drunk+1, 10); } },
-  { name: 'Косяк',               price: 10, desc: 'High +3', buy: s => { s.high = Math.min(s.high+3, 10); } },
+  { name: 'Косяк',               price: 10, desc: 'кайф +3 (расслабон)', buy: s => { s.high = Math.min(s.high+3, 10); } },
   // Офигенный косяк — «Очко прокачки» (EXE @ 0xab24): разовый +1 к самому
   // слабому боевому стату, мимо потолка качалки. Возвращает текст для лога.
-  { name: 'Офигенный косяк',     price: 35, desc: 'High +3, очко прокачки (+1 к слабейшему стату)',
+  { name: 'Офигенный косяк',     price: 35, desc: 'кайф +3, очко прокачки (+1 к слабейшему стату)',
     minDist: 1,   // дорогая «прокачка» заводится только с ОбьГЭСа и дальше
     buy: s => {
       s.high = Math.min(s.high + 3, 10);
@@ -641,12 +649,75 @@ function resetTransientState({ clearArrival = true } = {}) {
   scrollLogToBottom();
 }
 
+// Visible width available for a log line (it's drawn from x=2, leaving a
+// 2-col margin on each side of the 80-col grid — same budget the old
+// draw-time slice used).
+const WRAP_WIDTH = COLS - 4;
+
+// Is `^c` a color escape? Mirrors render.js writeAt(): hex digit, or the
+// ASCII-offset color range the original decoder used.
+function isColorEsc(c) {
+  if ('0123456789ABCDEFabcdef'.indexOf(c) >= 0) return true;
+  const cc = c.charCodeAt(0);
+  return (cc >= 0x21 && cc <= 0x2F) || (cc >= 0x3A && cc <= 0x3F);
+}
+
+// Word-wrap a `^N`-escaped string to `width` *visible* columns. Escapes count
+// as zero width, and the active color is carried onto each continuation line
+// (each wrapped line is drawn by its own writeAt() call, which would otherwise
+// reset the foreground to the println color argument). Breaks on spaces when
+// possible, hard-breaks an over-long run otherwise.
+function wrapColored(text, width) {
+  const lines = [];
+  let line = '';          // chars (incl. escapes) on the current visual line
+  let vis = 0;            // visible columns used on the current line
+  let active = '';        // latest color escape seen (current color)
+  let spaceIdx = -1;      // index in `line` of the last space (break point)
+  let visBeforeSpace = 0; // visible columns before that space
+  let colorAtSpace = '';  // active color at that space
+
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === '^' && i + 1 < text.length && isColorEsc(text[i + 1])) {
+      const esc = c + text[i + 1];
+      line += esc;
+      active = esc;
+      i++;
+      continue;
+    }
+    if (c === '\n') {
+      lines.push(line);
+      line = active; vis = 0; spaceIdx = -1;
+      continue;
+    }
+    if (vis >= width) {
+      if (spaceIdx >= 0) {
+        const tail = line.slice(spaceIdx + 1);
+        lines.push(line.slice(0, spaceIdx));
+        line = colorAtSpace + tail;
+        vis = vis - visBeforeSpace - 1;   // drop everything up to & incl. the space
+      } else {
+        lines.push(line);
+        line = active; vis = 0;
+      }
+      spaceIdx = -1;
+    }
+    if (c === ' ') { spaceIdx = line.length; visBeforeSpace = vis; colorAtSpace = active; }
+    line += c;
+    vis++;
+  }
+  lines.push(line);
+  return lines;
+}
+
 function println(text, color = 0x7) {
   const follow = !logReview || isLogAtBottom();
-  log.push({ text, color });
-  while (log.length > LOG_LIMIT) {
-    log.shift();
-    if (logTop > 0) logTop -= 1;
+  for (const part of wrapColored(String(text), WRAP_WIDTH)) {
+    log.push({ text: part, color });
+    while (log.length > LOG_LIMIT) {
+      log.shift();
+      if (logTop > 0) logTop -= 1;
+    }
   }
   if (follow) scrollLogToBottom();
 }
@@ -1091,9 +1162,20 @@ function handleDen(raw) {
     case 'p': {  // угостить пацанов пивом
       if (STATE.money >= 5) {
         STATE.money -= 5;
-        const gain = STATE.klass === 'gopnik' ? 7 : 5;   // Гопник bonus — Притон
+        // Diminishing street-cred: a round of beer buys less the more понта ты
+        // уже наел, so maxing out is a real grind, not 2-3 rounds (was a flat
+        // +5/+7). Гопник keeps the Притон bonus (+1).
+        const headroom = PONT_MAX - STATE.pont;
+        let gain = Math.max(1, Math.ceil(headroom / 4));  // 12→3, 9→3, 6→2, 4→1…
+        if (STATE.klass === 'gopnik') gain += 1;
+        const before = STATE.pont;
         STATE.pont = Math.min(PONT_MAX, STATE.pont + gain);
-        println(`^2Ты угостил пацанов пивом. Понтовость улутшилась на ${gain}.`, 0xA);
+        const realGain = STATE.pont - before;
+        if (realGain > 0) {
+          println(`^2Ты угостил пацанов пивом. Понтовость улутшилась на ${realGain}.`, 0xA);
+        } else {
+          println('^6Ты и так в полном понте — некуда расти.', 0x6);
+        }
         println(`^7Понтовость: ${STATE.pont}/${PONT_MAX}   Деньги: ${STATE.money}р`, 0x7);
       } else {
         println('^6А нет у тебя пива.', 0x6);
@@ -1101,7 +1183,7 @@ function handleDen(raw) {
       break;
     }
     case 'r': {  // занять денег на пиво
-      if (STATE.pont >= 2) {
+      if (STATE.pont >= PONT_GATE_BORROW) {
         const got = 2 + roll(3);
         STATE.money += got;
         STATE.pont -= 2;
@@ -1152,7 +1234,12 @@ function handleDen(raw) {
     }
     case 's':  // спросить про понтовость
       println(`^4Твоя понтовость сейчас = ${STATE.pont}/${PONT_MAX}.`, 0xC);
-      println('^7Да если чё мы за тебя впрягаемся.', 0x7);
+      // Подмога (`v`) включается только с PONT_GATE_BACKUP (см. кейс 'v').
+      if (STATE.pont >= PONT_GATE_BACKUP) {
+        println('^7Да если чё мы за тебя впрягёмся.', 0x7);
+      } else {
+        println('^6Да кто за такого мутного впрягаться будет? Поднимай понт.', 0x6);
+      }
       break;
     default:
       println('^CЧё? Тут так не говорят. (p / r / hp / a / d / s, 0 — свалить)', 0xC);
@@ -1627,7 +1714,7 @@ function runCommand(cmd) {
     case 'v':
       if (!ENCOUNTER) { println('^7Подкрепление не нужно — тут никого нет.', 0x7); break; }
       // Backup is gated by понтовость (EXE @ 0x35E0): no cred → nobody shows up.
-      if (STATE.pont < 3) {
+      if (STATE.pont < PONT_GATE_BACKUP) {
         println('^4Ни кто не хочет за тебя впрягаться.', 0xC);
         println('^6Сначала надо скорешиться с местной гопотой (притон, ^6pr^6).', 0x6);
         break;
@@ -1762,7 +1849,7 @@ function runCommand(cmd) {
     case 'kl':
       if (blockedLocation('kl')) break;
       // Club is gated by понтовость (EXE @ 0xA130): a nobody won't get in.
-      if (STATE.pont < 2) {
+      if (STATE.pont < PONT_GATE_CLUB) {
         println('^4Тебя мудака такого туда не пустят — поднимай понтовость.', 0xC);
         println('^6Тебе не стоит пока туда соваться. Зайди в притон (^6pr^6).', 0x6);
         break;
@@ -1881,6 +1968,10 @@ function runCommand(cmd) {
         })
         .catch(e => println(`^CИмпорт не удался: ${e.message || e}`, 0xC));
       println('^7Выбери .json-файл сейва в открывшемся окне...', 0x7);
+      break;
+    case 'bug':
+      try { downloadLog(log, STATE, STATE.nick); println('^8Лог игры скачан (.txt). Приложи его к багрепорту.', 0x8); }
+      catch (e) { println(`^CНе вышло скачать лог: ${e.message || e}`, 0xC); }
       break;
     case 'cp': {
       const cp = readCheckpoint();
@@ -2040,7 +2131,9 @@ export const play = {
     const visibleLog = log.slice(logTop, logTop + LOG_VIEW_ROWS);
     for (let i = 0; i < visibleLog.length; i++) {
       const { text, color } = visibleLog[i];
-      writeAt(buf, 2, 2 + i, text.slice(0, COLS - 4), color, 0);
+      // Lines are already wrapped to WRAP_WIDTH visible cols in println(); a
+      // raw string-length slice here would mis-cut lines that contain ^N escapes.
+      writeAt(buf, 2, 2 + i, text, color, 0);
     }
 
     // Prompt

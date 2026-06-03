@@ -23,6 +23,31 @@ The port has a playable walking skeleton:
 See [notes/SESSION_LOG.md](notes/SESSION_LOG.md) for the development diary and
 [notes/findings.md](notes/findings.md) for recovered binary knowledge.
 
+## Faithfulness and rebalancing
+
+The goal is a faithful port, and where a mechanic or value has been recovered
+from the original binary (via disassembly / Ghidra decompilation / extracted
+strings) the port reproduces it — these are flagged with EXE offsets in the
+code comments and in `notes/findings.md`.
+
+That said, **not every value is faithful to the source**. Some are port
+additions or have been **rebalanced for playability**, because the original
+value was never recovered or simply did not feel good in a browser session.
+Examples:
+
+- The **понтовость (street-cred) economy** has been tuned — the price/gain of a
+  round of beer in the притон uses diminishing returns, and the club/backup
+  thresholds were raised, so cred is earned rather than maxed in a couple of
+  clicks.
+- Various shop prices, per-district scaling, and encounter values are port
+  approximations rather than exact recoveries.
+- Saves use `localStorage` plus a JSON export/import instead of the original
+  `.sav` binary format (which is intentionally not reversed).
+
+When in doubt, the code comments distinguish RE-grounded values (with offsets)
+from tuned-for-feel ones, and `notes/SESSION_LOG.md` records the reasoning
+behind each balance change.
+
 ## Run
 
 Start a local static server from the repository root:
